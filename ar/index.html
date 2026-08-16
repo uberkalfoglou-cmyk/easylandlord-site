@@ -147,6 +147,16 @@ white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pcard .amt{text-align:end}
 .pcard .amt b{display:block;font-size:12.5px;font-weight:800}
 .pcard .amt span{font-size:10.5px;font-weight:700}
+.nudge{background:var(--surface);border:1px solid var(--border);
+border-inline-start:4px solid var(--warn);border-radius:12px;padding:11px 12px;
+margin-bottom:10px;display:flex;gap:9px;align-items:flex-start}
+.nico{flex:none;width:19px;height:19px;border-radius:50%;
+background:var(--warmsoft);color:var(--warn);font-size:12px;line-height:19px;
+text-align:center;font-weight:800}
+.ntxt{flex:1;min-width:0}
+.ntxt p{font-size:11.5px;line-height:1.42;margin:0}
+.ntxt b{display:block;margin-top:6px;color:var(--good);font-size:11.5px}
+.nx{flex:none;color:#9aa3ad;font-size:14px;line-height:1}
 .fab{width:46px;height:46px;border-radius:16px;background:var(--good);
 color:#fff;font-size:23px;line-height:46px;text-align:center;
 margin:6px 12px 0 auto;box-shadow:0 5px 14px rgba(17,122,61,.35)}
@@ -188,13 +198,17 @@ border-radius:16px;padding:24px;border-top:4px solid var(--good)}
 .card a{font-size:14px;font-weight:700;text-decoration:none;
 border-bottom:2px solid rgba(17,122,61,.28)}
 .card a:hover{border-bottom-color:var(--good)}
-.stats{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-text-align:center}
-.stat{background:linear-gradient(160deg,#fff,#f3f7f4);border:1px solid var(--border);
-border-radius:16px;padding:26px 12px}
-.stat b{display:block;font-size:42px;line-height:1;color:var(--good);
-font-weight:800;letter-spacing:-.03em}
-.stat span{color:var(--muted);font-size:14px;display:block;margin-top:10px}
+/* Four facts, not four stat tiles. A grid of big numbers in rounded boxes is
+   the single most corporate element a landing page can have, and this one sits
+   directly under a heading that says the app was not built by a corporation.
+   Thin rules and a plain list read like a note instead of a pitch deck. */
+.facts{max-width:660px;margin-top:26px}
+.fact{display:flex;align-items:baseline;gap:20px;padding:14px 0;
+border-bottom:1px solid var(--border)}
+.fact:last-child{border-bottom:0}
+.fact b{flex:none;min-width:52px;font-size:29px;line-height:1.1;font-weight:800;
+color:var(--good);letter-spacing:-.03em}
+.fact span{font-size:17px;color:var(--text)}
 .price{background:var(--surface);border:2px solid var(--gold);border-radius:16px;
 padding:28px;max-width:720px;box-shadow:0 8px 26px rgba(227,179,65,.18)}
 .privacy-band{background:var(--goodsoft);border-block:1px solid #c6e0d0}
@@ -382,6 +396,23 @@ M422 622 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" fill-rule="evenodd"/>
 <div class="pdf">تصدير إلى PDF</div>
 </div></div></div></div>
 </div></section>
+<section class="block flip tint"><div class="wrap">
+<div class="copy">
+<p class="kicker k-good">ينتبه لك</p>
+<h2>يتذكّر ما نسيته</h2>
+<p>غادر مستأجر الأسبوع الماضي، ولم تُصوَّر الشقة بعد — وبعد أسبوعين تُدهن الجدران ويضيع الدليل إلى الأبد. التطبيق ينتبه إلى ذلك ويقوله لك مرة واحدة، في الشاشة الأولى. لا نافذة تقفز أمامك، ولا علامة حمراء، ولا قائمة مهام طويلة: سطر واحد عن أهم شيء الآن، وضغطة واحدة تأخذك إليه مباشرة.</p>
+</div>
+<div class="shot"><div class="phone" role="img"><div class="screen"><div class="sbar"><span>9:41</span><span>▮▮▮</span></div>
+<div class="abar"><b>العقارات</b><span>≡</span></div>
+<div class="pad">
+<div class="nudge">
+<i class="nico">!</i>
+<div class="ntxt"><p>المستأجر في 12 شارع الجلاء، المهندسين غادر قبل 6 يومًا. لا توجد صور تسليم.</p>
+<b>التقط الصور →</b></div>
+<span class="nx">×</span>
+</div>
+<div class="pcard"><i class="dot" style="background:var(--warn)"></i><div class="who"><b>27 شارع مصدق، الدقي</b><span>أحمد فؤاد</span></div><div class="amt"><b>7,000 ج.م</b><span style="color:var(--warn)">مستحق</span></div></div><div class="pcard"><i class="dot" style="background:var(--good)"></i><div class="who"><b>9 شارع النصر، المعادي</b><span>هبة سليم</span></div><div class="amt"><b>9,000 ج.م</b><span style="color:var(--good)">مدفوع</span></div></div></div></div></div></div>
+</div></section>
 <section id="features"><div class="wrap">
 <h2>ماذا يفعل التطبيق</h2>
 <div class="grid">
@@ -418,12 +449,13 @@ M422 622 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" fill-rule="evenodd"/>
 </div></div></section>
 
 <section class="tint"><div class="wrap">
-<h2>بسيط عن قصد</h2>
-<div class="stats">
-<div class="stat"><b>2</b><span>تبويبان في التطبيق كله</span></div>
-<div class="stat"><b>0</b><span>حسابات تحتاج إلى إنشائها</span></div>
-<div class="stat"><b>10</b><span>لغات، وملف PDF بينها</span></div>
-<div class="stat"><b>3</b><span>عقارات مجانًا</span></div>
+<h2>ليس من صنع شركة كبيرة، ويظهر ذلك</h2>
+<p class="lead">لا مكالمة بيع. ولا فيديو تعريفي تشاهده قبل البدء. ولا شاشة رسوم بيانية لا يقرأها أحد، ولا نقاط ولا نجوم، ولا إلحاح عليك كي تعود. لا أحد هنا يحتاج أن تفتح التطبيق كل يوم ليرتفع رقم في مكان ما.</p><p class="lead">كُتب لشخص واحد يملك بضع شقق ويريد أن يكون الإيجار مكتوبًا عنده — وبالتحديد لمن هو أقلّ أهل البيت اعتيادًا على الهواتف. زرّان في أسفل الشاشة، وهذه هي القائمة كلها. لا شيء تضبطه قبل البدء. الأزرار كبيرة والخط كبير، لأن كثيرًا من الملّاك في السبعين من العمر. إن كنت تستطيع التقاط صورة بهاتفك، فأنت تعرف استعماله.</p>
+<div class="facts">
+<div class="fact"><b>2</b><span>زرّان في أسفل الشاشة، وهذا كل شيء</span></div>
+<div class="fact"><b>0</b><span>حسابات عليك إنشاؤها</span></div>
+<div class="fact"><b>10</b><span>لغات، وتقرير PDF بينها</span></div>
+<div class="fact"><b>3</b><span>عقارات مجانًا، دائمًا</span></div>
 </div></div></section>
 
 <section id="privacy" class="privacy-band"><div class="wrap">

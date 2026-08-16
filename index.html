@@ -147,6 +147,16 @@ white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pcard .amt{text-align:end}
 .pcard .amt b{display:block;font-size:12.5px;font-weight:800}
 .pcard .amt span{font-size:10.5px;font-weight:700}
+.nudge{background:var(--surface);border:1px solid var(--border);
+border-inline-start:4px solid var(--warn);border-radius:12px;padding:11px 12px;
+margin-bottom:10px;display:flex;gap:9px;align-items:flex-start}
+.nico{flex:none;width:19px;height:19px;border-radius:50%;
+background:var(--warmsoft);color:var(--warn);font-size:12px;line-height:19px;
+text-align:center;font-weight:800}
+.ntxt{flex:1;min-width:0}
+.ntxt p{font-size:11.5px;line-height:1.42;margin:0}
+.ntxt b{display:block;margin-top:6px;color:var(--good);font-size:11.5px}
+.nx{flex:none;color:#9aa3ad;font-size:14px;line-height:1}
 .fab{width:46px;height:46px;border-radius:16px;background:var(--good);
 color:#fff;font-size:23px;line-height:46px;text-align:center;
 margin:6px 12px 0 auto;box-shadow:0 5px 14px rgba(17,122,61,.35)}
@@ -188,13 +198,17 @@ border-radius:16px;padding:24px;border-top:4px solid var(--good)}
 .card a{font-size:14px;font-weight:700;text-decoration:none;
 border-bottom:2px solid rgba(17,122,61,.28)}
 .card a:hover{border-bottom-color:var(--good)}
-.stats{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-text-align:center}
-.stat{background:linear-gradient(160deg,#fff,#f3f7f4);border:1px solid var(--border);
-border-radius:16px;padding:26px 12px}
-.stat b{display:block;font-size:42px;line-height:1;color:var(--good);
-font-weight:800;letter-spacing:-.03em}
-.stat span{color:var(--muted);font-size:14px;display:block;margin-top:10px}
+/* Four facts, not four stat tiles. A grid of big numbers in rounded boxes is
+   the single most corporate element a landing page can have, and this one sits
+   directly under a heading that says the app was not built by a corporation.
+   Thin rules and a plain list read like a note instead of a pitch deck. */
+.facts{max-width:660px;margin-top:26px}
+.fact{display:flex;align-items:baseline;gap:20px;padding:14px 0;
+border-bottom:1px solid var(--border)}
+.fact:last-child{border-bottom:0}
+.fact b{flex:none;min-width:52px;font-size:29px;line-height:1.1;font-weight:800;
+color:var(--good);letter-spacing:-.03em}
+.fact span{font-size:17px;color:var(--text)}
 .price{background:var(--surface);border:2px solid var(--gold);border-radius:16px;
 padding:28px;max-width:720px;box-shadow:0 8px 26px rgba(227,179,65,.18)}
 .privacy-band{background:var(--goodsoft);border-block:1px solid #c6e0d0}
@@ -382,6 +396,23 @@ M422 622 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" fill-rule="evenodd"/>
 <div class="pdf">Export to PDF</div>
 </div></div></div></div>
 </div></section>
+<section class="block flip tint"><div class="wrap">
+<div class="copy">
+<p class="kicker k-good">It notices</p>
+<h2>It remembers what you forgot</h2>
+<p>A tenant moved out last week and there are still no handover photos — in a fortnight the flat is repainted and that evidence is gone for good. The app spots it and says so, once, on the home screen. Not a popup, not a badge, not a list of chores: one line about the one thing that matters most right now, and a tap that takes you straight to it.</p>
+</div>
+<div class="shot"><div class="phone" role="img"><div class="screen"><div class="sbar"><span>9:41</span><span>▮▮▮</span></div>
+<div class="abar"><b>Properties</b><span>≡</span></div>
+<div class="pad">
+<div class="nudge">
+<i class="nico">!</i>
+<div class="ntxt"><p>The tenant at 12 Bell Street left 6 days ago. There are no move-out photos.</p>
+<b>Take the photos →</b></div>
+<span class="nx">×</span>
+</div>
+<div class="pcard"><i class="dot" style="background:var(--warn)"></i><div class="who"><b>4 Green Lane</b><span>Marco Rossi</span></div><div class="amt"><b>$720</b><span style="color:var(--warn)">Due</span></div></div><div class="pcard"><i class="dot" style="background:var(--good)"></i><div class="who"><b>31 Park Road</b><span>Sofia Ruiz</span></div><div class="amt"><b>$900</b><span style="color:var(--good)">Paid</span></div></div></div></div></div></div>
+</div></section>
 <section id="features"><div class="wrap">
 <h2>What it does</h2>
 <div class="grid">
@@ -418,12 +449,13 @@ M422 622 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" fill-rule="evenodd"/>
 </div></div></section>
 
 <section class="tint"><div class="wrap">
-<h2>Small on purpose</h2>
-<div class="stats">
-<div class="stat"><b>2</b><span>tabs in the whole app</span></div>
-<div class="stat"><b>0</b><span>accounts to create</span></div>
-<div class="stat"><b>10</b><span>languages, PDF included</span></div>
-<div class="stat"><b>3</b><span>properties free</span></div>
+<h2>Not built by a corporation, and you can tell</h2>
+<p class="lead">No sales call. No onboarding video. No dashboard of charts nobody reads, no badges, no nagging you to come back. Nobody here needs you to log in daily so a number goes up somewhere.</p><p class="lead">It was written for one person with a few flats who wants the rent written down — and specifically for the one in the family who is worst with technology. Two buttons at the bottom of the screen, and that is the entire menu. Nothing to set up. Big buttons and big text, because plenty of landlords are seventy. If you can take a photo with your phone, you already know how to use it.</p>
+<div class="facts">
+<div class="fact"><b>2</b><span>buttons at the bottom — that is the whole menu</span></div>
+<div class="fact"><b>0</b><span>accounts to create</span></div>
+<div class="fact"><b>10</b><span>languages, the PDF included</span></div>
+<div class="fact"><b>3</b><span>properties free, forever</span></div>
 </div></div></section>
 
 <section id="privacy" class="privacy-band"><div class="wrap">
