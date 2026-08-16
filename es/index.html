@@ -65,8 +65,12 @@ gap:8px;flex-wrap:wrap}
 header.site nav a{color:var(--text);text-decoration:none;font-size:15px;
 font-weight:600;padding:8px 12px;border-radius:9px}
 header.site nav a:hover{background:var(--raised);color:var(--good)}
-header.site nav a.get{background:var(--good);color:#fff;padding:9px 16px}
-header.site nav a.get:hover{background:#0e6733;color:#fff}
+/* The download button is a SIBLING of the nav, not a child of it, so that on a
+   phone the nav can scroll sideways without ever taking this button with it. */
+header.site .get{flex:none;background:var(--good);color:#fff;font-weight:700;
+font-size:15px;text-decoration:none;padding:9px 16px;border-radius:9px;
+white-space:nowrap}
+header.site .get:hover{background:#0e6733;color:#fff}
 
 /* --- type --------------------------------------------------------------- */
 h1{font-size:clamp(32px,5.4vw,50px);line-height:1.08;letter-spacing:-.025em;
@@ -227,9 +231,22 @@ color:#79828e}
 .block.flip .copy,.block.flip .shot{order:0}
 .shot{order:-1}
 .faq-toc{columns:1}
-header.site nav{gap:4px}
-header.site nav a{padding:8px 9px;font-size:14px}
 .fgrid{grid-template-columns:1fr;gap:34px}
+
+/* The header used to be one row of fixed height with a wrapping nav, which on
+   a phone pushed the last links out of a box that could not grow - they landed
+   on top of the page. Now the brand keeps its own row and the nav gets a full
+   row underneath that SCROLLS SIDEWAYS instead of wrapping. Nothing is ever
+   cut off, in any of the ten languages, however long the words get. */
+header.site .wrap{flex-wrap:wrap;height:auto;gap:0;padding-block:10px}
+.brand{margin-inline-end:auto}
+header.site .get{order:2;font-size:14px;padding:8px 14px}
+header.site nav{order:3;margin-inline-start:0;width:100%;margin-top:9px;
+flex-wrap:nowrap;overflow-x:auto;gap:4px;
+scrollbar-width:none;-ms-overflow-style:none}
+header.site nav::-webkit-scrollbar{display:none}
+header.site nav a{padding:7px 9px;font-size:14.5px;white-space:nowrap;
+flex:0 0 auto}
 }
 </style>
 </head>
@@ -247,8 +264,9 @@ M422 622 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" fill-rule="evenodd"/>
 <a href="/es/#features">Qué hace</a>
 <a href="/es/#privacy">Tus datos</a>
 <a href="/es/faq/">Preguntas</a>
+</nav>
 <a class="get" href="https://play.google.com/store/apps/details?id=com.easylandlord.app" rel="noopener">Descargar la app</a>
-</nav></div></header>
+</div></header>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Easy Landlord", "operatingSystem": "Android", "applicationCategory": "BusinessApplication", "description": "Controla el alquiler, los gastos y lo que te queda de cada piso. Mira de un vistazo quién ha pagado, guarda recibos y fotos y exporta un PDF. Sin cuenta.", "url": "https://easylandlord.land/es/", "inLanguage": ["en", "el", "es", "it", "ru", "sq", "ar", "zh", "af", "sw"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
 <main>
 <div class="hero"><div class="wrap">
