@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Easy Landlord — 房东收租记账管理 App</title>
+<meta name="description" content="房东自用的记账收租 App：一个屏幕看清谁交了房租，支出随手拍收据，租金减去成本还剩多少一目了然，可导出 PDF。无需注册，数据只存在手机里，三套房以内免费。">
+<meta name="keywords" content="房东记账app, 收租记账软件, 房租管理app, 出租房记账, 租客管理软件, 房东收租提醒app, 租金收支记录表, 包租婆记账 app">
+<link rel="canonical" href="https://easylandlord.land/zh/">
+  <link rel="alternate" hreflang="en" href="https://easylandlord.land/">
+  <link rel="alternate" hreflang="el" href="https://easylandlord.land/el/">
+  <link rel="alternate" hreflang="es" href="https://easylandlord.land/es/">
+  <link rel="alternate" hreflang="it" href="https://easylandlord.land/it/">
+  <link rel="alternate" hreflang="ru" href="https://easylandlord.land/ru/">
+  <link rel="alternate" hreflang="sq" href="https://easylandlord.land/sq/">
+  <link rel="alternate" hreflang="ar" href="https://easylandlord.land/ar/">
+  <link rel="alternate" hreflang="zh" href="https://easylandlord.land/zh/">
+  <link rel="alternate" hreflang="af" href="https://easylandlord.land/af/">
+  <link rel="alternate" hreflang="sw" href="https://easylandlord.land/sw/">
+  <link rel="alternate" hreflang="x-default" href="https://easylandlord.land/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Easy Landlord">
+<meta property="og:title" content="Easy Landlord — 谁交房租了，一眼就知道">
+<meta property="og:description" content="房东自用的记账收租 App：一个屏幕看清谁交了房租，支出随手拍收据，租金减去成本还剩多少一目了然，可导出 PDF。无需注册，数据只存在手机里，三套房以内免费。">
+<meta property="og:url" content="https://easylandlord.land/zh/">
+<meta property="og:image" content="https://easylandlord.land/assets/social-zh.png">
+<meta property="og:image:alt" content="Easy Landlord 的主界面：一张房源列表，每处房产旁边有一个彩色圆点，显示这个月的房租收到了没有。">
+<meta property="og:locale" content="zh_CN">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="el_GR">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:locale:alternate" content="it_IT">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:locale:alternate" content="sq_AL">
+  <meta property="og:locale:alternate" content="ar_AR">
+  <meta property="og:locale:alternate" content="af_ZA">
+  <meta property="og:locale:alternate" content="sw_KE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Easy Landlord — 谁交房租了，一眼就知道">
+<meta name="twitter:description" content="房东自用的记账收租 App：一个屏幕看清谁交了房租，支出随手拍收据，租金减去成本还剩多少一目了然，可导出 PDF。无需注册，数据只存在手机里，三套房以内免费。">
+<meta name="twitter:image" content="https://easylandlord.land/assets/social-zh.png">
+<meta name="theme-color" content="#0f1115">
+<link rel="icon" href="/assets/icon.png" type="image/png">
+<style>
+:root{--bg:#eff2f5;--surface:#fff;--raised:#edf0f3;--text:#11161c;
+--muted:#5c6672;--border:#d8dde3;--gold:#e3b341;--good:#117a3d;
+--warn:#9a5800;--bad:#c0342b;--ink:#11161c;
+--goodsoft:#e6f2ea;--warmsoft:#fdf3d7;--badsoft:#fbeae8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+-webkit-font-smoothing:antialiased}
+a{color:var(--good)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* --- header ------------------------------------------------------------- */
+header.site{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);
+backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+header.site .wrap{display:flex;align-items:center;gap:26px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;
+text-decoration:none;color:var(--ink);white-space:nowrap;letter-spacing:-.01em}
+header.site nav{margin-inline-start:auto;display:flex;align-items:center;
+gap:8px;flex-wrap:wrap}
+header.site nav a{color:var(--text);text-decoration:none;font-size:15px;
+font-weight:600;padding:8px 12px;border-radius:9px}
+header.site nav a:hover{background:var(--raised);color:var(--good)}
+header.site nav a.get{background:var(--good);color:#fff;padding:9px 16px}
+header.site nav a.get:hover{background:#0e6733;color:#fff}
+
+/* --- type --------------------------------------------------------------- */
+h1{font-size:clamp(32px,5.4vw,50px);line-height:1.08;letter-spacing:-.025em;
+margin:0 0 18px}
+h2{font-size:clamp(24px,3.4vw,32px);line-height:1.18;letter-spacing:-.018em;
+margin:0 0 14px}
+h3{font-size:19px;margin:0 0 8px;letter-spacing:-.01em}
+p{margin:0 0 16px}
+.lead{font-size:19px;color:var(--muted);max-width:680px}
+.kicker{display:inline-block;font-size:12.5px;font-weight:800;
+letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;
+border-radius:999px;margin:0 0 14px}
+.k-good{background:var(--goodsoft);color:var(--good)}
+.k-warn{background:var(--warmsoft);color:var(--warn)}
+.k-gold{background:#fbf0d5;color:#7a5a12}
+
+/* --- hero --------------------------------------------------------------- */
+.hero{background:linear-gradient(168deg,#fff 0%,#eaf3ee 58%,#f7efd9 100%);
+border-bottom:1px solid var(--border)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;
+align-items:center;padding-top:66px;padding-bottom:66px}
+.eyebrow{color:var(--good);font-size:13px;font-weight:800;letter-spacing:.09em;
+text-transform:uppercase;margin:0 0 16px}
+.hero p.sub{color:var(--muted);font-size:19.5px;margin:0 0 26px}
+.cta{display:inline-block;background:var(--gold);color:#2a1f05;font-weight:800;
+padding:16px 30px;border-radius:12px;text-decoration:none;
+box-shadow:0 6px 18px rgba(227,179,65,.42)}
+.cta:hover{filter:brightness(1.05)}
+.note{color:var(--muted);font-size:14.5px;margin-top:16px}
+.proof{list-style:none;margin:26px 0 0;padding:0;display:flex;gap:22px;
+flex-wrap:wrap}
+.proof li{display:flex;align-items:center;gap:8px;font-size:15px;
+font-weight:600;color:var(--text)}
+.tick{flex:none;width:19px;height:19px;border-radius:50%;background:var(--good);
+color:#fff;font-size:12px;line-height:19px;text-align:center;font-weight:900}
+
+/* --- sections ----------------------------------------------------------- */
+section{padding:64px 0}
+section.tint{background:var(--surface);border-block:1px solid var(--border)}
+
+/* --- alternating feature blocks with a phone ---------------------------- */
+.block .wrap{display:grid;grid-template-columns:1fr 300px;gap:52px;
+align-items:center}
+.block.flip .wrap{grid-template-columns:300px 1fr}
+.block.flip .copy{order:2}
+.block.flip .shot{order:1}
+.block p{color:var(--muted);font-size:17.5px;margin:0}
+
+/* --- the phone ---------------------------------------------------------- */
+.phone{width:290px;margin:0 auto;background:var(--ink);border-radius:34px;
+padding:9px;box-shadow:0 18px 44px rgba(17,22,28,.26)}
+.screen{background:var(--bg);border-radius:26px;overflow:hidden;
+font-size:12px;line-height:1.4}
+.sbar{display:flex;justify-content:space-between;padding:8px 16px 3px;
+font-size:10px;font-weight:700;color:var(--muted)}
+.abar{display:flex;align-items:center;justify-content:space-between;
+padding:6px 16px 12px;font-size:16px;font-weight:700}
+.abar span{color:var(--muted);font-size:14px;font-weight:400}
+.pad{padding:0 12px 14px}
+.pcard{background:var(--surface);border:1px solid var(--border);
+border-radius:12px;padding:11px 12px;margin-bottom:9px;display:flex;
+align-items:center;gap:10px}
+.dot{flex:none;width:11px;height:11px;border-radius:50%}
+.pcard .who{flex:1;min-width:0}
+.pcard .who b{display:block;font-size:12.5px;font-weight:700;
+white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pcard .who span{color:var(--muted);font-size:11px}
+.pcard .amt{text-align:end}
+.pcard .amt b{display:block;font-size:12.5px;font-weight:800}
+.pcard .amt span{font-size:10.5px;font-weight:700}
+.fab{width:46px;height:46px;border-radius:16px;background:var(--good);
+color:#fff;font-size:23px;line-height:46px;text-align:center;
+margin:6px 12px 0 auto;box-shadow:0 5px 14px rgba(17,122,61,.35)}
+.notif{background:var(--ink);color:#f2f4f7;border-radius:14px;padding:11px 12px;
+margin:8px 12px 14px;display:flex;gap:10px;align-items:flex-start}
+.notif b{font-size:12px;display:block;margin-bottom:2px}
+.notif span{font-size:11px;color:#b9c1cb}
+.msgbox{background:var(--surface);border:1px solid var(--border);
+border-radius:12px;padding:11px;font-size:11.5px;color:var(--text);
+margin-bottom:11px}
+.chans{display:flex;gap:7px}
+.chan{flex:1;text-align:center;padding:9px 4px;border-radius:10px;
+font-size:10.5px;font-weight:800;background:var(--good);color:#fff}
+.chan.alt{background:var(--raised);color:var(--text);
+border:1px solid var(--border)}
+.segs{display:flex;gap:6px;margin-bottom:11px}
+.seg{flex:1;text-align:center;padding:6px 0;border-radius:999px;font-size:10.5px;
+font-weight:700;background:var(--raised);color:var(--muted);
+border:1px solid var(--border)}
+.seg.on{background:var(--good);color:#fff;border-color:var(--good)}
+.rrow{display:flex;justify-content:space-between;align-items:baseline;
+background:var(--surface);border:1px solid var(--border);border-radius:12px;
+padding:11px 12px;margin-bottom:8px}
+.rrow span{color:var(--muted);font-size:11.5px}
+.rrow b{font-size:14px;font-weight:800}
+.rrow.net b{color:var(--good);font-size:17px}
+.warnbar{background:var(--warmsoft);border:1px solid #e3b94f;border-radius:10px;
+padding:9px 10px;font-size:10.5px;color:var(--warn);margin-bottom:10px}
+.pdf{text-align:center;padding:11px;border-radius:11px;background:var(--gold);
+color:#2a1f05;font-size:11.5px;font-weight:800}
+
+/* --- cards, stats, price ------------------------------------------------ */
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.card{background:var(--surface);border:1px solid var(--border);
+border-radius:16px;padding:24px;border-top:4px solid var(--good)}
+.card:nth-child(3n+2){border-top-color:var(--gold)}
+.card:nth-child(3n){border-top-color:var(--warn)}
+.card p{color:var(--muted);font-size:15.5px;margin-bottom:14px}
+.card a{font-size:14px;font-weight:700;text-decoration:none;
+border-bottom:2px solid rgba(17,122,61,.28)}
+.card a:hover{border-bottom-color:var(--good)}
+.stats{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+text-align:center}
+.stat{background:linear-gradient(160deg,#fff,#f3f7f4);border:1px solid var(--border);
+border-radius:16px;padding:26px 12px}
+.stat b{display:block;font-size:42px;line-height:1;color:var(--good);
+font-weight:800;letter-spacing:-.03em}
+.stat span{color:var(--muted);font-size:14px;display:block;margin-top:10px}
+.price{background:var(--surface);border:2px solid var(--gold);border-radius:16px;
+padding:28px;max-width:720px;box-shadow:0 8px 26px rgba(227,179,65,.18)}
+.privacy-band{background:var(--goodsoft);border-block:1px solid #c6e0d0}
+
+/* --- faq ---------------------------------------------------------------- */
+.faq-toc{columns:2;column-gap:30px;margin:0 0 34px;padding:0;list-style:none}
+.faq-toc li{margin:0 0 9px;break-inside:avoid}
+.faq-toc a{color:var(--text);text-decoration:none;font-size:15px}
+.faq-toc a:hover{color:var(--good);text-decoration:underline}
+.qa{border-top:1px solid var(--border);padding:22px 0}
+.qa h3{scroll-margin-top:84px}
+.qa p{color:var(--muted);margin:0}
+
+/* --- footer ------------------------------------------------------------- */
+footer.site{background:var(--ink);color:#9ba3af;padding:52px 0 34px;
+font-size:15px}
+footer.site a{color:#dfe4ea;text-decoration:none}
+footer.site a:hover{color:var(--gold)}
+.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1.3fr;gap:44px;
+padding-bottom:34px}
+.fbrand .brand{color:#fff;margin-bottom:14px}
+.fbrand p{color:#9ba3af;font-size:14.5px;max-width:300px;margin:0 0 20px}
+.fcta{display:inline-block;background:var(--gold);color:#2a1f05;font-weight:800;
+padding:11px 20px;border-radius:10px;font-size:14.5px}
+.fcta:hover{color:#2a1f05;filter:brightness(1.05)}
+.fcol{display:flex;flex-direction:column;gap:11px;align-items:flex-start}
+footer.site h4{margin:0 0 6px;font-size:12.5px;font-weight:800;
+letter-spacing:.11em;text-transform:uppercase;color:var(--gold)}
+.fcol a{font-size:14.5px}
+.langgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+gap:11px 18px}
+.langgrid .here{color:#fff;font-weight:700;
+border-bottom:2px solid var(--gold);justify-self:start}
+.fbar{border-top:1px solid #2a313b;padding-top:22px;display:flex;
+justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;
+color:#79828e}
+
+@media (max-width:860px){
+.hero .wrap,.block .wrap,.block.flip .wrap{grid-template-columns:1fr;gap:34px}
+.block.flip .copy,.block.flip .shot{order:0}
+.shot{order:-1}
+.faq-toc{columns:1}
+header.site nav{gap:4px}
+header.site nav a{padding:8px 9px;font-size:14px}
+.fgrid{grid-template-columns:1fr;gap:34px}
+}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="/zh/"><svg width="30" height="30" viewBox="0 0 1024 1024" aria-hidden="true">
+<rect width="1024" height="1024" rx="220" fill="#12151a"/>
+<g fill="none" stroke="#f4f6f8" stroke-width="56" stroke-linecap="round" stroke-linejoin="round">
+<path d="M212 512 L512 262 L812 512"/><path d="M282 500 L282 772 L742 772 L742 500"/></g>
+<g fill="#e3b341"><path d="M422 622 m-74 0 a74 74 0 1 0 148 0 a74 74 0 1 0 -148 0
+M422 622 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" fill-rule="evenodd"/>
+<rect x="462" y="601" width="214" height="42"/><rect x="598" y="643" width="32" height="53"/>
+<rect x="648" y="643" width="28" height="53"/></g></svg><span>Easy Landlord</span></a>
+<nav>
+<a href="/zh/#features">能做什么</a>
+<a href="/zh/#privacy">你的数据</a>
+<a href="/zh/faq/">常见问题</a>
+<a class="get" href="https://play.google.com/store/apps/details?id=com.easylandlord.app" rel="noopener">下载应用</a>
+</nav></div></header>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Easy Landlord", "operatingSystem": "Android", "applicationCategory": "BusinessApplication", "description": "房东自用的记账收租 App：一个屏幕看清谁交了房租，支出随手拍收据，租金减去成本还剩多少一目了然，可导出 PDF。无需注册，数据只存在手机里，三套房以内免费。", "url": "https://easylandlord.land/zh/", "inLanguage": ["en", "el", "es", "it", "ru", "sq", "ar", "zh", "af", "sw"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<main>
+<div class="hero"><div class="wrap">
+<div class="copy">
+<p class="eyebrow">Android · 三套房源免费 · 无需账号</p>
+<h1>你的房产，都在一处</h1>
+<p class="sub">谁交了房租、这个月花了多少、租约、入住照片，还有会计每年要的那一页。全在你的手机里。</p>
+<a class="cta" href="https://play.google.com/store/apps/details?id=com.easylandlord.app" rel="noopener">在 Google Play 下载</a>
+<p class="note">三套房源以内免费。不用填卡号，也没有会过期的试用。</p>
+<ul class="proof"><li><i class="tick">✓</i>不用注册任何账号</li><li><i class="tick">✓</i>没有网络也能用</li><li><i class="tick">✓</i>10 种语言，含 PDF</li></ul>
+</div>
+<div class="shot"><div class="phone" role="img"><div class="screen"><div class="sbar"><span>9:41</span><span>▮▮▮</span></div>
+<div class="abar"><b>房源</b><span>≡</span></div>
+<div class="pad"><div class="pcard">
+<i class="dot" style="background:var(--bad)"></i>
+<div class="who"><b>文化路 88 号 3-202</b><span>陈志强</span></div>
+<div class="amt"><b>¥3,200</b>
+<span style="color:var(--bad)">逾期</span></div>
+</div><div class="pcard">
+<i class="dot" style="background:var(--warn)"></i>
+<div class="who"><b>长江东路 12 号 501</b><span>刘敏</span></div>
+<div class="amt"><b>¥2,800</b>
+<span style="color:var(--warn)">待付</span></div>
+</div><div class="pcard">
+<i class="dot" style="background:var(--good)"></i>
+<div class="who"><b>枫林街 6 号 1502</b><span>王海涛</span></div>
+<div class="amt"><b>¥4,500</b>
+<span style="color:var(--good)">已付</span></div>
+</div></div>
+<div class="fab">+</div><div style="height:12px"></div></div></div></div>
+</div></div>
+
+<section class="tint"><div class="wrap">
+<h2>信息你其实都有，只是散在各处。</h2>
+<p class="lead">转账记录在银行 App 里。收据照片埋在相册的某个角落。热水器那件事记了一笔，回头总能翻到。租约大概在某个文件夹里。然后租客说他已经付了，你又得一样样去找。Easy Landlord 把这些都放在一处——就在你的手机上，不用登录任何东西。</p>
+</div></section>
+<section class="block"><div class="wrap">
+<div class="copy">
+<p class="kicker k-good">都在一处</p>
+<h2>一套房的全部，都在一张卡片里</h2>
+<p>月租、租客、支出、单据照片、入住时拍的照片、租约、身份证件和证明，全都在这一张卡片里。不用去相册里翻，不用去抽屉里找，也不用在三个应用之间来回切。</p>
+</div>
+<div class="shot"><div class="phone" role="img"><div class="screen"><div class="sbar"><span>9:41</span><span>▮▮▮</span></div>
+<div class="abar"><b>枫林街 6 号 1502</b><span>✎</span></div>
+<div class="pad">
+<div class="pcard"><i class="dot" style="background:var(--good)"></i>
+<div class="who"><b>王海涛</b><span>已付</span></div>
+</div>
+<div class="rrow"><span>月租</span><b style="color:var(--good)">¥4,500</b></div><div class="rrow"><span>支出</span><b>14</b></div><div class="rrow"><span>照片</span><b>38</b></div><div class="rrow"><span>文件</span><b>租约 · 身份证件</b></div><div class="rrow"><span>已发送的提醒</span><b>2</b></div>
+</div></div></div></div>
+</div></section>
+<section class="block flip tint"><div class="wrap">
+<div class="copy">
+<p class="kicker k-warn">赶在逾期之前</p>
+<h2>房租逾期之前，它先提醒你</h2>
+<p>收租那天早上提醒你一次，宽限期一过再提醒一次。然后应用把催租的话写好——姓名、地址、月份和金额都已经填上——你用 WhatsApp、短信或电子邮件发出去。发之前你先看一遍，想改就改。</p>
+</div>
+<div class="shot"><div class="phone" role="img"><div class="screen"><div class="sbar"><span>9:41</span><span>▮▮▮</span></div>
+<div class="notif"><svg width="22" height="22" viewBox="0 0 1024 1024" aria-hidden="true">
+<rect width="1024" height="1024" rx="220" fill="#12151a"/>
+<g fill="none" stroke="#f4f6f8" stroke-width="56" stroke-linecap="round" stroke-linejoin="round">
+<path d="M212 512 L512 262 L812 512"/><path d="M282 500 L282 772 L742 772 L742 500"/></g>
+<g fill="#e3b341"><path d="M422 622 m-74 0 a74 74 0 1 0 148 0 a74 74 0 1 0 -148 0
+M422 622 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" fill-rule="evenodd"/>
+<rect x="462" y="601" width="214" height="42"/><rect x="598" y="643" width="32" height="53"/>
+<rect x="648" y="643" width="28" height="53"/></g></svg><div><b>租客正式逾期</b>
+<span>文化路 88 号 3-202 的宽限期已经结束。</span></div></div>
+<div class="abar" style="padding-top:0"><b>发送提醒</b></div>
+<div class="pad">
+<div class="msgbox">你好 陈志强，文化路 88 号 3-202 3 月 的租金 ¥3,200 还没有收到。方便告诉我什么时候可以付吗？谢谢。</div>
+<div class="chans">
+<div class="chan">WhatsApp</div>
+<div class="chan alt">短信</div>
+<div class="chan alt">电子邮件</div>
+</div></div></div></div></div>
+</div></section>
+<section class="block"><div class="wrap">
+<div class="copy">
+<p class="kicker k-gold">交给会计</p>
+<h2>一页纸，直接交出去</h2>
+<p>收进来的租金、花出去的支出、真正剩下多少，按月、按季、按年都行，看一套房或者全部房源都行。导出成一份 PDF，用你自己的语言，直接交给替你报税的人。</p>
+</div>
+<div class="shot"><div class="phone" role="img"><div class="screen"><div class="sbar"><span>9:41</span><span>▮▮▮</span></div>
+<div class="abar"><b>收支</b></div>
+<div class="pad">
+<div class="segs"><div class="seg on">按月</div>
+<div class="seg">按季</div>
+<div class="seg">按年</div></div>
+<div class="warnbar">提醒：每一笔支出都要记。漏记成本，利润就是错的。</div>
+<div class="rrow"><span>收租总额</span><b>¥28,600</b></div>
+<div class="rrow"><span>支出总额</span><b>¥4,150</b></div>
+<div class="rrow net"><span>净利润</span><b>¥24,450</b></div>
+<div class="pdf">导出 PDF</div>
+</div></div></div></div>
+</div></section>
+<section id="features"><div class="wrap">
+<h2>能做什么</h2>
+<div class="grid">
+<article class="card">
+<h3>谁付了，不用想就看得出</h3>
+<p>所有房源在一个屏幕上，每处一个圆点。绿色：房租已付。橙色：待付。红色：过了你设的宽限期，已经逾期。灰色：房子空置。需要你处理的排在最上面。</p>
+<a href="/zh/faq/#那些彩色圆点是什么意思">那些彩色圆点是什么意思？</a>
+</article>
+<article class="card">
+<h3>十秒记一笔支出</h3>
+<p>金额、花在什么上，再加一张单据照片。几个月后它还在，日期也跟着，而不是抽屉里一张已经褪色的小票。</p>
+<a href="/zh/faq/#为什么总数和我的银行账户对不上">为什么总数和我的银行账户对不上？</a>
+</article>
+<article class="card">
+<h3>押金有争议时，照片说了算</h3>
+<p>租客入住时按房间拍一遍，退租时再拍一遍，两组照片并排对照。有了它，吵架就变成了商量。</p>
+<a href="/zh/faq/#租客要搬走了我该怎么办">租客要搬走了，我该怎么办？</a>
+</article>
+<article class="card">
+<h3>知道自己到底赚了多少</h3>
+<p>租金减去支出，按月、按季、按年都行，看一套房或者全部房源。给替你报税的人生成一页 PDF，用你自己的语言。</p>
+<a href="/zh/faq/#我能给会计一份东西吗">我能给会计一份东西吗？</a>
+</article>
+<article class="card">
+<h3>催租不用自己想措辞</h3>
+<p>房租逾期时，应用会写好一条客气的提醒，姓名、地址、月份和金额都已经填好。想改就改，然后用 WhatsApp、短信或电子邮件发出去。它还记着你催过，以及是什么时候催的。</p>
+<a href="/zh/faq/#应用会自己给我的租客发消息吗">应用会自己给我的租客发消息吗？</a>
+</article>
+<article class="card">
+<h3>租约、身份证件和证明，都在一处</h3>
+<p>把租约、证明，或者任何要紧的文件附上去。设好租约到期的日子，应用会提前一个月提醒你。存在某位租客名下的文件，会随这位租客一起离开。</p>
+<a href="/zh/faq/#我可以保存租客的身份证件吗">我可以保存租客的身份证件吗？</a>
+</article>
+</div></div></section>
+
+<section class="tint"><div class="wrap">
+<h2>刻意做得小</h2>
+<div class="stats">
+<div class="stat"><b>2</b><span>个标签页，整个应用就这些</span></div>
+<div class="stat"><b>0</b><span>个需要注册的账号</span></div>
+<div class="stat"><b>10</b><span>种语言，PDF 也一样</span></div>
+<div class="stat"><b>3</b><span>套房源免费</span></div>
+</div></div></section>
+
+<section id="privacy" class="privacy-band"><div class="wrap">
+<h2>租客的名字不会离开你的手机</h2>
+<p class="lead">不用注册账号，也没有服务器保存你的记录。所有内容都存在这台设备上。应用唯一会往外发的，是崩溃时的一份匿名报告，连它你也可以关掉。备份就是一个文件，自己导出，想放哪儿就放哪儿。</p>
+<p><a href="/privacy/">查看隐私政策</a></p>
+</div></section>
+
+<section><div class="wrap">
+<h2>三套房源免费</h2>
+<div class="price">
+<p>从第一分钟起功能就是全的：支出、照片、提醒、收支、导出 PDF 和备份。没有会过期的试用，也不用填卡号。</p>
+<p>超过三套房源需要订阅。备份、恢复和 PDF 导出在任何档位都免费——你自己的记录，不该被扣在别人手里。</p>
+<a class="cta" href="https://play.google.com/store/apps/details?id=com.easylandlord.app" rel="noopener">在 Google Play 下载</a>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<h2>大家常问的问题</h2>
+<ul class="faq-toc">
+<li><a href="/zh/faq/#那些彩色圆点是什么意思">那些彩色圆点是什么意思？</a></li>
+<li><a href="/zh/faq/#为什么总数和我的银行账户对不上">为什么总数和我的银行账户对不上？</a></li>
+<li><a href="/zh/faq/#租客要搬走了我该怎么办">租客要搬走了，我该怎么办？</a></li>
+<li><a href="/zh/faq/#我能给会计一份东西吗">我能给会计一份东西吗？</a></li>
+<li><a href="/zh/faq/#应用会自己给我的租客发消息吗">应用会自己给我的租客发消息吗？</a></li>
+</ul>
+<p><a href="/zh/faq/">常见问题 →</a></p>
+</div></section>
+</main>
+<footer class="site"><div class="wrap">
+<div class="fgrid">
+
+<div class="fbrand">
+<a class="brand" href="/zh/"><svg width="30" height="30" viewBox="0 0 1024 1024" aria-hidden="true">
+<rect width="1024" height="1024" rx="220" fill="#12151a"/>
+<g fill="none" stroke="#f4f6f8" stroke-width="56" stroke-linecap="round" stroke-linejoin="round">
+<path d="M212 512 L512 262 L812 512"/><path d="M282 500 L282 772 L742 772 L742 500"/></g>
+<g fill="#e3b341"><path d="M422 622 m-74 0 a74 74 0 1 0 148 0 a74 74 0 1 0 -148 0
+M422 622 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" fill-rule="evenodd"/>
+<rect x="462" y="601" width="214" height="42"/><rect x="598" y="643" width="32" height="53"/>
+<rect x="648" y="643" width="28" height="53"/></g></svg><span>Easy Landlord</span></a>
+<p>Easy Landlord — 为自己打理出租房的人而做。</p>
+<a class="fcta" href="https://play.google.com/store/apps/details?id=com.easylandlord.app" rel="noopener">在 Google Play 下载</a>
+</div>
+
+<nav class="fcol" aria-label="能做什么">
+<h4>能做什么</h4>
+<a href="/zh/#features">能做什么</a>
+<a href="/zh/#privacy">你的数据</a>
+<a href="/zh/faq/">常见问题</a>
+<a href="/privacy/">查看隐私政策</a>
+</nav>
+
+<nav class="fcol flangs" aria-label="Languages">
+<h4>语言</h4>
+<div class="langgrid"><a href="/" hreflang="en" lang="en">English</a><a href="/el/" hreflang="el" lang="el">Ελληνικά</a><a href="/es/" hreflang="es" lang="es">Español</a><a href="/it/" hreflang="it" lang="it">Italiano</a><a href="/ru/" hreflang="ru" lang="ru">Русский</a><a href="/sq/" hreflang="sq" lang="sq">Shqip</a><a href="/ar/" hreflang="ar" lang="ar">العربية</a><span class="here" lang="zh">中文</span><a href="/af/" hreflang="af" lang="af">Afrikaans</a><a href="/sw/" hreflang="sw" lang="sw">Kiswahili</a></div>
+</nav>
+
+</div>
+<div class="fbar"><span>© Easy Landlord</span>
+<span>Android · 三套房源免费 · 无需账号</span></div>
+</div></footer>
+</body>
+</html>

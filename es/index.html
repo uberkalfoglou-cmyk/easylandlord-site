@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Easy Landlord — app para controlar alquileres y gastos</title>
+<meta name="description" content="Controla el alquiler, los gastos y lo que te queda de cada piso. Mira de un vistazo quién ha pagado, guarda recibos y fotos y exporta un PDF. Sin cuenta.">
+<meta name="keywords" content="app para controlar alquileres, app gestión de alquileres, app para propietarios de pisos en alquiler, llevar las cuentas de un piso alquilado, app control de pagos de alquiler, landlord app en español, rent tracker app español, programa para gestionar alquileres gratis">
+<link rel="canonical" href="https://easylandlord.land/es/">
+  <link rel="alternate" hreflang="en" href="https://easylandlord.land/">
+  <link rel="alternate" hreflang="el" href="https://easylandlord.land/el/">
+  <link rel="alternate" hreflang="es" href="https://easylandlord.land/es/">
+  <link rel="alternate" hreflang="it" href="https://easylandlord.land/it/">
+  <link rel="alternate" hreflang="ru" href="https://easylandlord.land/ru/">
+  <link rel="alternate" hreflang="sq" href="https://easylandlord.land/sq/">
+  <link rel="alternate" hreflang="ar" href="https://easylandlord.land/ar/">
+  <link rel="alternate" hreflang="zh" href="https://easylandlord.land/zh/">
+  <link rel="alternate" hreflang="af" href="https://easylandlord.land/af/">
+  <link rel="alternate" hreflang="sw" href="https://easylandlord.land/sw/">
+  <link rel="alternate" hreflang="x-default" href="https://easylandlord.land/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Easy Landlord">
+<meta property="og:title" content="Easy Landlord — quién ha pagado, de un vistazo">
+<meta property="og:description" content="Controla el alquiler, los gastos y lo que te queda de cada piso. Mira de un vistazo quién ha pagado, guarda recibos y fotos y exporta un PDF. Sin cuenta.">
+<meta property="og:url" content="https://easylandlord.land/es/">
+<meta property="og:image" content="https://easylandlord.land/assets/social-es.png">
+<meta property="og:image:alt" content="La pantalla principal de Easy Landlord: la lista de propiedades, cada una con un punto de color que indica si el alquiler está pagado.">
+<meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="el_GR">
+  <meta property="og:locale:alternate" content="it_IT">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:locale:alternate" content="sq_AL">
+  <meta property="og:locale:alternate" content="ar_AR">
+  <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:locale:alternate" content="af_ZA">
+  <meta property="og:locale:alternate" content="sw_KE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Easy Landlord — quién ha pagado, de un vistazo">
+<meta name="twitter:description" content="Controla el alquiler, los gastos y lo que te queda de cada piso. Mira de un vistazo quién ha pagado, guarda recibos y fotos y exporta un PDF. Sin cuenta.">
+<meta name="twitter:image" content="https://easylandlord.land/assets/social-es.png">
+<meta name="theme-color" content="#0f1115">
+<link rel="icon" href="/assets/icon.png" type="image/png">
+<style>
+:root{--bg:#eff2f5;--surface:#fff;--raised:#edf0f3;--text:#11161c;
+--muted:#5c6672;--border:#d8dde3;--gold:#e3b341;--good:#117a3d;
+--warn:#9a5800;--bad:#c0342b;--ink:#11161c;
+--goodsoft:#e6f2ea;--warmsoft:#fdf3d7;--badsoft:#fbeae8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+-webkit-font-smoothing:antialiased}
+a{color:var(--good)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* --- header ------------------------------------------------------------- */
+header.site{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);
+backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+header.site .wrap{display:flex;align-items:center;gap:26px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;
+text-decoration:none;color:var(--ink);white-space:nowrap;letter-spacing:-.01em}
+header.site nav{margin-inline-start:auto;display:flex;align-items:center;
+gap:8px;flex-wrap:wrap}
+header.site nav a{color:var(--text);text-decoration:none;font-size:15px;
+font-weight:600;padding:8px 12px;border-radius:9px}
+header.site nav a:hover{background:var(--raised);color:var(--good)}
+header.site nav a.get{background:var(--good);color:#fff;padding:9px 16px}
+header.site nav a.get:hover{background:#0e6733;color:#fff}
+
+/* --- type --------------------------------------------------------------- */
+h1{font-size:clamp(32px,5.4vw,50px);line-height:1.08;letter-spacing:-.025em;
+margin:0 0 18px}
+h2{font-size:clamp(24px,3.4vw,32px);line-height:1.18;letter-spacing:-.018em;
+margin:0 0 14px}
+h3{font-size:19px;margin:0 0 8px;letter-spacing:-.01em}
+p{margin:0 0 16px}
+.lead{font-size:19px;color:var(--muted);max-width:680px}
+.kicker{display:inline-block;font-size:12.5px;font-weight:800;
+letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;
+border-radius:999px;margin:0 0 14px}
+.k-good{background:var(--goodsoft);color:var(--good)}
+.k-warn{background:var(--warmsoft);color:var(--warn)}
+.k-gold{background:#fbf0d5;color:#7a5a12}
+
+/* --- hero --------------------------------------------------------------- */
+.hero{background:linear-gradient(168deg,#fff 0%,#eaf3ee 58%,#f7efd9 100%);
+border-bottom:1px solid var(--border)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;
+align-items:center;padding-top:66px;padding-bottom:66px}
+.eyebrow{color:var(--good);font-size:13px;font-weight:800;letter-spacing:.09em;
+text-transform:uppercase;margin:0 0 16px}
+.hero p.sub{color:var(--muted);font-size:19.5px;margin:0 0 26px}
+.cta{display:inline-block;background:var(--gold);color:#2a1f05;font-weight:800;
+padding:16px 30px;border-radius:12px;text-decoration:none;
+box-shadow:0 6px 18px rgba(227,179,65,.42)}
+.cta:hover{filter:brightness(1.05)}
+.note{color:var(--muted);font-size:14.5px;margin-top:16px}
+.proof{list-style:none;margin:26px 0 0;padding:0;display:flex;gap:22px;
+flex-wrap:wrap}
+.proof li{display:flex;align-items:center;gap:8px;font-size:15px;
+font-weight:600;color:var(--text)}
+.tick{flex:none;width:19px;height:19px;border-radius:50%;background:var(--good);
+color:#fff;font-size:12px;line-height:19px;text-align:center;font-weight:900}
+
+/* --- sections ----------------------------------------------------------- */
+section{padding:64px 0}
+section.tint{background:var(--surface);border-block:1px solid var(--border)}
+
+/* --- alternating feature blocks with a phone ---------------------------- */
+.block .wrap{display:grid;grid-template-columns:1fr 300px;gap:52px;
+align-items:center}
+.block.flip .wrap{grid-template-columns:300px 1fr}
+.block.flip .copy{order:2}
+.block.flip .shot{order:1}
+.block p{color:var(--muted);font-size:17.5px;margin:0}
+
+/* --- the phone ---------------------------------------------------------- */
+.phone{width:290px;margin:0 auto;background:var(--ink);border-radius:34px;
+padding:9px;box-shadow:0 18px 44px rgba(17,22,28,.26)}
+.screen{background:var(--bg);border-radius:26px;overflow:hidden;
+font-size:12px;line-height:1.4}
+.sbar{display:flex;justify-content:space-between;padding:8px 16px 3px;
+font-size:10px;font-weight:700;color:var(--muted)}
+.abar{display:flex;align-items:center;justify-content:space-between;
+padding:6px 16px 12px;font-size:16px;font-weight:700}
+.abar span{color:var(--muted);font-size:14px;font-weight:400}
+.pad{padding:0 12px 14px}
+.pcard{background:var(--surface);border:1px solid var(--border);
+border-radius:12px;padding:11px 12px;margin-bottom:9px;display:flex;
+align-items:center;gap:10px}
+.dot{flex:none;width:11px;height:11px;border-radius:50%}
+.pcard .who{flex:1;min-width:0}
+.pcard .who b{display:block;font-size:12.5px;font-weight:700;
+white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pcard .who span{color:var(--muted);font-size:11px}
+.pcard .amt{text-align:end}
+.pcard .amt b{display:block;font-size:12.5px;font-weight:800}
+.pcard .amt span{font-size:10.5px;font-weight:700}
+.fab{width:46px;height:46px;border-radius:16px;background:var(--good);
+color:#fff;font-size:23px;line-height:46px;text-align:center;
+margin:6px 12px 0 auto;box-shadow:0 5px 14px rgba(17,122,61,.35)}
+.notif{background:var(--ink);color:#f2f4f7;border-radius:14px;padding:11px 12px;
+margin:8px 12px 14px;display:flex;gap:10px;align-items:flex-start}
+.notif b{font-size:12px;display:block;margin-bottom:2px}
+.notif span{font-size:11px;color:#b9c1cb}
+.msgbox{background:var(--surface);border:1px solid var(--border);
+border-radius:12px;padding:11px;font-size:11.5px;color:var(--text);
+margin-bottom:11px}
+.chans{display:flex;gap:7px}
+.chan{flex:1;text-align:center;padding:9px 4px;border-radius:10px;
+font-size:10.5px;font-weight:800;background:var(--good);color:#fff}
+.chan.alt{background:var(--raised);color:var(--text);
+border:1px solid var(--border)}
+.segs{display:flex;gap:6px;margin-bottom:11px}
+.seg{flex:1;text-align:center;padding:6px 0;border-radius:999px;font-size:10.5px;
+font-weight:700;background:var(--raised);color:var(--muted);
+border:1px solid var(--border)}
+.seg.on{background:var(--good);color:#fff;border-color:var(--good)}
+.rrow{display:flex;justify-content:space-between;align-items:baseline;
+background:var(--surface);border:1px solid var(--border);border-radius:12px;
+padding:11px 12px;margin-bottom:8px}
+.rrow span{color:var(--muted);font-size:11.5px}
+.rrow b{font-size:14px;font-weight:800}
+.rrow.net b{color:var(--good);font-size:17px}
+.warnbar{background:var(--warmsoft);border:1px solid #e3b94f;border-radius:10px;
+padding:9px 10px;font-size:10.5px;color:var(--warn);margin-bottom:10px}
+.pdf{text-align:center;padding:11px;border-radius:11px;background:var(--gold);
+color:#2a1f05;font-size:11.5px;font-weight:800}
+
+/* --- cards, stats, price ------------------------------------------------ */
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.card{background:var(--surface);border:1px solid var(--border);
+border-radius:16px;padding:24px;border-top:4px solid var(--good)}
+.card:nth-child(3n+2){border-top-color:var(--gold)}
+.card:nth-child(3n){border-top-color:var(--warn)}
+.card p{color:var(--muted);font-size:15.5px;margin-bottom:14px}
+.card a{font-size:14px;font-weight:700;text-decoration:none;
+border-bottom:2px solid rgba(17,122,61,.28)}
+.card a:hover{border-bottom-color:var(--good)}
+.stats{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+text-align:center}
+.stat{background:linear-gradient(160deg,#fff,#f3f7f4);border:1px solid var(--border);
+border-radius:16px;padding:26px 12px}
+.stat b{display:block;font-size:42px;line-height:1;color:var(--good);
+font-weight:800;letter-spacing:-.03em}
+.stat span{color:var(--muted);font-size:14px;display:block;margin-top:10px}
+.price{background:var(--surface);border:2px solid var(--gold);border-radius:16px;
+padding:28px;max-width:720px;box-shadow:0 8px 26px rgba(227,179,65,.18)}
+.privacy-band{background:var(--goodsoft);border-block:1px solid #c6e0d0}
+
+/* --- faq ---------------------------------------------------------------- */
+.faq-toc{columns:2;column-gap:30px;margin:0 0 34px;padding:0;list-style:none}
+.faq-toc li{margin:0 0 9px;break-inside:avoid}
+.faq-toc a{color:var(--text);text-decoration:none;font-size:15px}
+.faq-toc a:hover{color:var(--good);text-decoration:underline}
+.qa{border-top:1px solid var(--border);padding:22px 0}
+.qa h3{scroll-margin-top:84px}
+.qa p{color:var(--muted);margin:0}
+
+/* --- footer ------------------------------------------------------------- */
+footer.site{background:var(--ink);color:#9ba3af;padding:52px 0 34px;
+font-size:15px}
+footer.site a{color:#dfe4ea;text-decoration:none}
+footer.site a:hover{color:var(--gold)}
+.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1.3fr;gap:44px;
+padding-bottom:34px}
+.fbrand .brand{color:#fff;margin-bottom:14px}
+.fbrand p{color:#9ba3af;font-size:14.5px;max-width:300px;margin:0 0 20px}
+.fcta{display:inline-block;background:var(--gold);color:#2a1f05;font-weight:800;
+padding:11px 20px;border-radius:10px;font-size:14.5px}
+.fcta:hover{color:#2a1f05;filter:brightness(1.05)}
+.fcol{display:flex;flex-direction:column;gap:11px;align-items:flex-start}
+footer.site h4{margin:0 0 6px;font-size:12.5px;font-weight:800;
+letter-spacing:.11em;text-transform:uppercase;color:var(--gold)}
+.fcol a{font-size:14.5px}
+.langgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+gap:11px 18px}
+.langgrid .here{color:#fff;font-weight:700;
+border-bottom:2px solid var(--gold);justify-self:start}
+.fbar{border-top:1px solid #2a313b;padding-top:22px;display:flex;
+justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;
+color:#79828e}
+
+@media (max-width:860px){
+.hero .wrap,.block .wrap,.block.flip .wrap{grid-template-columns:1fr;gap:34px}
+.block.flip .copy,.block.flip .shot{order:0}
+.shot{order:-1}
+.faq-toc{columns:1}
+header.site nav{gap:4px}
+header.site nav a{padding:8px 9px;font-size:14px}
+.fgrid{grid-template-columns:1fr;gap:34px}
+}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="/es/"><svg width="30" height="30" viewBox="0 0 1024 1024" aria-hidden="true">
+<rect width="1024" height="1024" rx="220" fill="#12151a"/>
+<g fill="none" stroke="#f4f6f8" stroke-width="56" stroke-linecap="round" stroke-linejoin="round">
+<path d="M212 512 L512 262 L812 512"/><path d="M282 500 L282 772 L742 772 L742 500"/></g>
+<g fill="#e3b341"><path d="M422 622 m-74 0 a74 74 0 1 0 148 0 a74 74 0 1 0 -148 0
+M422 622 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" fill-rule="evenodd"/>
+<rect x="462" y="601" width="214" height="42"/><rect x="598" y="643" width="32" height="53"/>
+<rect x="648" y="643" width="28" height="53"/></g></svg><span>Easy Landlord</span></a>
+<nav>
+<a href="/es/#features">Qué hace</a>
+<a href="/es/#privacy">Tus datos</a>
+<a href="/es/faq/">Preguntas</a>
+<a class="get" href="https://play.google.com/store/apps/details?id=com.easylandlord.app" rel="noopener">Descargar la app</a>
+</nav></div></header>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Easy Landlord", "operatingSystem": "Android", "applicationCategory": "BusinessApplication", "description": "Controla el alquiler, los gastos y lo que te queda de cada piso. Mira de un vistazo quién ha pagado, guarda recibos y fotos y exporta un PDF. Sin cuenta.", "url": "https://easylandlord.land/es/", "inLanguage": ["en", "el", "es", "it", "ru", "sq", "ar", "zh", "af", "sw"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<main>
+<div class="hero"><div class="wrap">
+<div class="copy">
+<p class="eyebrow">Android · gratis hasta tres propiedades · sin cuenta</p>
+<h1>Tus alquileres, en un solo sitio.</h1>
+<p class="sub">Quién ha pagado, qué has gastado, el contrato, las fotos y la página que te pide el gestor. Todo en el móvil.</p>
+<a class="cta" href="https://play.google.com/store/apps/details?id=com.easylandlord.app" rel="noopener">Descárgala en Google Play</a>
+<p class="note">Gratis hasta tres propiedades. Sin tarjeta y sin prueba que caduque.</p>
+<ul class="proof"><li><i class="tick">✓</i>Sin cuenta ni registro</li><li><i class="tick">✓</i>Funciona sin internet</li><li><i class="tick">✓</i>10 idiomas, PDF incluido</li></ul>
+</div>
+<div class="shot"><div class="phone" role="img"><div class="screen"><div class="sbar"><span>9:41</span><span>▮▮▮</span></div>
+<div class="abar"><b>Propiedades</b><span>≡</span></div>
+<div class="pad"><div class="pcard">
+<i class="dot" style="background:var(--bad)"></i>
+<div class="who"><b>Calle Mayor 12, 3.º B</b><span>Lucía Fernández</span></div>
+<div class="amt"><b>850 €</b>
+<span style="color:var(--bad)">Atrasado</span></div>
+</div><div class="pcard">
+<i class="dot" style="background:var(--warn)"></i>
+<div class="who"><b>Avenida del Puerto 45</b><span>Javier Ortega</span></div>
+<div class="amt"><b>720 €</b>
+<span style="color:var(--warn)">Pendiente</span></div>
+</div><div class="pcard">
+<i class="dot" style="background:var(--good)"></i>
+<div class="who"><b>Calle Serrano 8, 2.º A</b><span>Marta Sanz</span></div>
+<div class="amt"><b>900 €</b>
+<span style="color:var(--good)">Pagado</span></div>
+</div></div>
+<div class="fab">+</div><div style="height:12px"></div></div></div></div>
+</div></div>
+
+<section class="tint"><div class="wrap">
+<h2>La información ya la tienes. Solo que está desperdigada.</h2>
+<p class="lead">La app del banco para las transferencias. Fotos de recibos perdidas por la galería. Una nota sobre la caldera que ya aparecerá. El contrato en una carpeta, seguramente. Y entonces un inquilino dice que pagó y te toca buscar. Easy Landlord es el sitio donde está todo junto: en tu móvil, sin nada a lo que entrar.</p>
+</div></section>
+<section class="block"><div class="wrap">
+<div class="copy">
+<p class="kicker k-good">Un solo sitio</p>
+<h2>Todo el piso, en una sola ficha</h2>
+<p>El alquiler, el inquilino, los gastos, los recibos, las fotos de entrada, el contrato, los certificados. No en la galería, no en un cajón, no repartidos entre tres apps.</p>
+</div>
+<div class="shot"><div class="phone" role="img"><div class="screen"><div class="sbar"><span>9:41</span><span>▮▮▮</span></div>
+<div class="abar"><b>Calle Serrano 8, 2.º A</b><span>✎</span></div>
+<div class="pad">
+<div class="pcard"><i class="dot" style="background:var(--good)"></i>
+<div class="who"><b>Marta Sanz</b><span>Pagado</span></div>
+</div>
+<div class="rrow"><span>Alquiler mensual</span><b style="color:var(--good)">900 €</b></div><div class="rrow"><span>Gastos</span><b>14</b></div><div class="rrow"><span>Fotos</span><b>38</b></div><div class="rrow"><span>Documentos</span><b>Contrato · DNI</b></div><div class="rrow"><span>Recordatorios enviados</span><b>2</b></div>
+</div></div></div></div>
+</div></section>
+<section class="block flip tint"><div class="wrap">
+<div class="copy">
+<p class="kicker k-warn">Antes del retraso</p>
+<h2>Te avisa antes de que el alquiler se retrase</h2>
+<p>Un aviso la mañana en que vence el alquiler, y otro en cuanto se acaba el periodo de gracia. Después la app te escribe el recordatorio —nombre, dirección, mes e importe ya puestos— y lo envías por WhatsApp, SMS o correo. Lo lees antes, y puedes cambiarlo.</p>
+</div>
+<div class="shot"><div class="phone" role="img"><div class="screen"><div class="sbar"><span>9:41</span><span>▮▮▮</span></div>
+<div class="notif"><svg width="22" height="22" viewBox="0 0 1024 1024" aria-hidden="true">
+<rect width="1024" height="1024" rx="220" fill="#12151a"/>
+<g fill="none" stroke="#f4f6f8" stroke-width="56" stroke-linecap="round" stroke-linejoin="round">
+<path d="M212 512 L512 262 L812 512"/><path d="M282 500 L282 772 L742 772 L742 500"/></g>
+<g fill="#e3b341"><path d="M422 622 m-74 0 a74 74 0 1 0 148 0 a74 74 0 1 0 -148 0
+M422 622 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" fill-rule="evenodd"/>
+<rect x="462" y="601" width="214" height="42"/><rect x="598" y="643" width="32" height="53"/>
+<rect x="648" y="643" width="28" height="53"/></g></svg><div><b>El inquilino está oficialmente atrasado</b>
+<span>Se acabó el periodo de gracia de Calle Mayor 12, 3.º B.</span></div></div>
+<div class="abar" style="padding-top:0"><b>Enviar un recordatorio</b></div>
+<div class="pad">
+<div class="msgbox">Hola Lucía, el alquiler de Calle Mayor 12, 3.º B de marzo, 850 €, todavía no ha llegado. ¿Puedes decirme cuándo podrás pagarlo? Gracias.</div>
+<div class="chans">
+<div class="chan">WhatsApp</div>
+<div class="chan alt">SMS</div>
+<div class="chan alt">Correo</div>
+</div></div></div></div></div>
+</div></section>
+<section class="block"><div class="wrap">
+<div class="copy">
+<p class="kicker k-gold">Para tu gestor</p>
+<h2>Una página, lista para entregar</h2>
+<p>Lo que entra de alquiler, lo que sale en gastos y lo que queda de verdad: por mes, por trimestre o por año, de una propiedad o de todas. Lo exportas en PDF y en tu idioma.</p>
+</div>
+<div class="shot"><div class="phone" role="img"><div class="screen"><div class="sbar"><span>9:41</span><span>▮▮▮</span></div>
+<div class="abar"><b>Ingresos</b></div>
+<div class="pad">
+<div class="segs"><div class="seg on">Mensual</div>
+<div class="seg">Trimestral</div>
+<div class="seg">Anual</div></div>
+<div class="warnbar">Recuerda: registra TODOS los gastos. Si te saltas costes, tu beneficio saldrá mal.</div>
+<div class="rrow"><span>Alquiler cobrado</span><b>7.650 €</b></div>
+<div class="rrow"><span>Gastos totales</span><b>1.240 €</b></div>
+<div class="rrow net"><span>Beneficio neto</span><b>6.410 €</b></div>
+<div class="pdf">Exportar a PDF</div>
+</div></div></div></div>
+</div></section>
+<section id="features"><div class="wrap">
+<h2>Qué hace</h2>
+<div class="grid">
+<article class="card">
+<h3>Ves quién ha pagado sin pensar</h3>
+<p>Todas las propiedades en una pantalla, cada una con un punto de color. Verde: el alquiler está. Ámbar: pendiente. Rojo: pasado el periodo de gracia que tú marcas. Gris: el piso está libre. Las que te necesitan salen arriba.</p>
+<a href="/es/faq/#qué-significan-los-puntos-de-colores">¿Qué significan los puntos de colores?</a>
+</article>
+<article class="card">
+<h3>Registra un gasto en diez segundos</h3>
+<p>El importe, para qué fue y una foto del recibo. Meses después sigue ahí, con su fecha, en vez de ser un papel descolorido en un cajón.</p>
+<a href="/es/faq/#por-qué-el-total-no-cuadra-con-mi-cuenta-del-banco">¿Por qué el total no cuadra con mi cuenta del banco?</a>
+</article>
+<article class="card">
+<h3>Zanja las discusiones por la fianza con fotos</h3>
+<p>Fotos habitación por habitación cuando el inquilino entra, y otra vez cuando se va, una al lado de la otra. Eso es lo que convierte una discusión en una conversación.</p>
+<a href="/es/faq/#un-inquilino-se-marcha-qué-hago">Un inquilino se marcha. ¿Qué hago?</a>
+</article>
+<article class="card">
+<h3>Sabes lo que has ganado de verdad</h3>
+<p>Alquiler menos gastos, por mes, por trimestre o por año, de una propiedad o de todas. Una página en PDF para quien te lleve los impuestos, en tu idioma.</p>
+<a href="/es/faq/#puedo-darle-algo-a-mi-asesor">¿Puedo darle algo a mi asesor?</a>
+</article>
+<article class="card">
+<h3>Reclama el alquiler sin escribir el mensaje</h3>
+<p>Cuando el alquiler se retrasa, la app escribe un recordatorio educado con el nombre, la dirección, el mes y el importe ya puestos. Edítalo si quieres y envíalo por WhatsApp, SMS o correo. Además se guarda que lo pediste, y cuándo.</p>
+<a href="/es/faq/#la-app-le-escribe-a-mi-inquilino-por-su-cuenta">¿La app le escribe a mi inquilino por su cuenta?</a>
+</article>
+<article class="card">
+<h3>Contratos, DNI y certificados en un solo sitio</h3>
+<p>Adjunta el contrato, un certificado, lo que te haga falta. Pon la fecha de fin del contrato y la app te avisa un mes antes. Los documentos guardados con un inquilino se van cuando se va él.</p>
+<a href="/es/faq/#puedo-guardar-una-copia-del-dni-de-mi-inquilino">¿Puedo guardar una copia del DNI de mi inquilino?</a>
+</article>
+</div></div></section>
+
+<section class="tint"><div class="wrap">
+<h2>Pequeña a propósito</h2>
+<div class="stats">
+<div class="stat"><b>2</b><span>pestañas en toda la app</span></div>
+<div class="stat"><b>0</b><span>cuentas que crear</span></div>
+<div class="stat"><b>10</b><span>idiomas, PDF incluido</span></div>
+<div class="stat"><b>3</b><span>propiedades gratis</span></div>
+</div></div></section>
+
+<section id="privacy" class="privacy-band"><div class="wrap">
+<h2>Los nombres de tus inquilinos se quedan en tu móvil</h2>
+<p class="lead">No hay cuenta que crear ni servidor que guarde tus datos. Todo se queda en el propio teléfono. Lo único que la app llega a enviar es un informe anónimo si falla, y eso también lo puedes desactivar. La copia de seguridad es un archivo que exportas y guardas donde quieras.</p>
+<p><a href="/privacy/">Lee la política de privacidad</a></p>
+</div></section>
+
+<section><div class="wrap">
+<h2>Gratis para tres propiedades</h2>
+<div class="price">
+<p>Todo funciona desde el primer minuto: gastos, fotos, recordatorios, ingresos, exportar a PDF y copia de seguridad. Sin prueba que caduque y sin tarjeta.</p>
+<p>A partir de tres propiedades hay suscripción. La copia de seguridad, la restauración y el PDF siguen siendo gratis en todos los niveles: tus datos no deberían quedarse nunca secuestrados.</p>
+<a class="cta" href="https://play.google.com/store/apps/details?id=com.easylandlord.app" rel="noopener">Descárgala en Google Play</a>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<h2>Preguntas que nos hacen</h2>
+<ul class="faq-toc">
+<li><a href="/es/faq/#qué-significan-los-puntos-de-colores">¿Qué significan los puntos de colores?</a></li>
+<li><a href="/es/faq/#por-qué-el-total-no-cuadra-con-mi-cuenta-del-banco">¿Por qué el total no cuadra con mi cuenta del banco?</a></li>
+<li><a href="/es/faq/#un-inquilino-se-marcha-qué-hago">Un inquilino se marcha. ¿Qué hago?</a></li>
+<li><a href="/es/faq/#puedo-darle-algo-a-mi-asesor">¿Puedo darle algo a mi asesor?</a></li>
+<li><a href="/es/faq/#la-app-le-escribe-a-mi-inquilino-por-su-cuenta">¿La app le escribe a mi inquilino por su cuenta?</a></li>
+</ul>
+<p><a href="/es/faq/">Preguntas →</a></p>
+</div></section>
+</main>
+<footer class="site"><div class="wrap">
+<div class="fgrid">
+
+<div class="fbrand">
+<a class="brand" href="/es/"><svg width="30" height="30" viewBox="0 0 1024 1024" aria-hidden="true">
+<rect width="1024" height="1024" rx="220" fill="#12151a"/>
+<g fill="none" stroke="#f4f6f8" stroke-width="56" stroke-linecap="round" stroke-linejoin="round">
+<path d="M212 512 L512 262 L812 512"/><path d="M282 500 L282 772 L742 772 L742 500"/></g>
+<g fill="#e3b341"><path d="M422 622 m-74 0 a74 74 0 1 0 148 0 a74 74 0 1 0 -148 0
+M422 622 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" fill-rule="evenodd"/>
+<rect x="462" y="601" width="214" height="42"/><rect x="598" y="643" width="32" height="53"/>
+<rect x="648" y="643" width="28" height="53"/></g></svg><span>Easy Landlord</span></a>
+<p>Easy Landlord — para quien lleva él mismo su piso de alquiler.</p>
+<a class="fcta" href="https://play.google.com/store/apps/details?id=com.easylandlord.app" rel="noopener">Descárgala en Google Play</a>
+</div>
+
+<nav class="fcol" aria-label="Qué hace">
+<h4>Qué hace</h4>
+<a href="/es/#features">Qué hace</a>
+<a href="/es/#privacy">Tus datos</a>
+<a href="/es/faq/">Preguntas</a>
+<a href="/privacy/">Lee la política de privacidad</a>
+</nav>
+
+<nav class="fcol flangs" aria-label="Languages">
+<h4>Idioma</h4>
+<div class="langgrid"><a href="/" hreflang="en" lang="en">English</a><a href="/el/" hreflang="el" lang="el">Ελληνικά</a><span class="here" lang="es">Español</span><a href="/it/" hreflang="it" lang="it">Italiano</a><a href="/ru/" hreflang="ru" lang="ru">Русский</a><a href="/sq/" hreflang="sq" lang="sq">Shqip</a><a href="/ar/" hreflang="ar" lang="ar">العربية</a><a href="/zh/" hreflang="zh" lang="zh">中文</a><a href="/af/" hreflang="af" lang="af">Afrikaans</a><a href="/sw/" hreflang="sw" lang="sw">Kiswahili</a></div>
+</nav>
+
+</div>
+<div class="fbar"><span>© Easy Landlord</span>
+<span>Android · gratis hasta tres propiedades · sin cuenta</span></div>
+</div></footer>
+</body>
+</html>

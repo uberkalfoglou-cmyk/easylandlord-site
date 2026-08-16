@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="af">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Easy Landlord — huur-dophou-app vir verhuurders</title>
+<meta name="description" content="Hou huur, uitgawes en wat oorbly by vir een woonstel of twintig. Sien wie betaal het, stoor kwitansies en foto's, voer 'n PDF uit. Geen rekening.">
+<meta name="keywords" content="huur dophou app, verhuurder app, landlord app south africa, rent tracker app, huurinkomste bestuur, rental property app south africa, app om huurders te bestuur, property management app for landlords">
+<link rel="canonical" href="https://easylandlord.land/af/">
+  <link rel="alternate" hreflang="en" href="https://easylandlord.land/">
+  <link rel="alternate" hreflang="el" href="https://easylandlord.land/el/">
+  <link rel="alternate" hreflang="es" href="https://easylandlord.land/es/">
+  <link rel="alternate" hreflang="it" href="https://easylandlord.land/it/">
+  <link rel="alternate" hreflang="ru" href="https://easylandlord.land/ru/">
+  <link rel="alternate" hreflang="sq" href="https://easylandlord.land/sq/">
+  <link rel="alternate" hreflang="ar" href="https://easylandlord.land/ar/">
+  <link rel="alternate" hreflang="zh" href="https://easylandlord.land/zh/">
+  <link rel="alternate" hreflang="af" href="https://easylandlord.land/af/">
+  <link rel="alternate" hreflang="sw" href="https://easylandlord.land/sw/">
+  <link rel="alternate" hreflang="x-default" href="https://easylandlord.land/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Easy Landlord">
+<meta property="og:title" content="Easy Landlord — sien met een oogopslag wie betaal het">
+<meta property="og:description" content="Hou huur, uitgawes en wat oorbly by vir een woonstel of twintig. Sien wie betaal het, stoor kwitansies en foto's, voer 'n PDF uit. Geen rekening.">
+<meta property="og:url" content="https://easylandlord.land/af/">
+<meta property="og:image" content="https://easylandlord.land/assets/social-af.png">
+<meta property="og:image:alt" content="Die Easy Landlord-hoofskerm: 'n lys eiendomme, elk met 'n gekleurde kolletjie wat wys of die huur betaal is.">
+<meta property="og:locale" content="af_ZA">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="el_GR">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:locale:alternate" content="it_IT">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:locale:alternate" content="sq_AL">
+  <meta property="og:locale:alternate" content="ar_AR">
+  <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:locale:alternate" content="sw_KE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Easy Landlord — sien met een oogopslag wie betaal het">
+<meta name="twitter:description" content="Hou huur, uitgawes en wat oorbly by vir een woonstel of twintig. Sien wie betaal het, stoor kwitansies en foto's, voer 'n PDF uit. Geen rekening.">
+<meta name="twitter:image" content="https://easylandlord.land/assets/social-af.png">
+<meta name="theme-color" content="#0f1115">
+<link rel="icon" href="/assets/icon.png" type="image/png">
+<style>
+:root{--bg:#eff2f5;--surface:#fff;--raised:#edf0f3;--text:#11161c;
+--muted:#5c6672;--border:#d8dde3;--gold:#e3b341;--good:#117a3d;
+--warn:#9a5800;--bad:#c0342b;--ink:#11161c;
+--goodsoft:#e6f2ea;--warmsoft:#fdf3d7;--badsoft:#fbeae8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+-webkit-font-smoothing:antialiased}
+a{color:var(--good)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* --- header ------------------------------------------------------------- */
+header.site{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);
+backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+header.site .wrap{display:flex;align-items:center;gap:26px;height:66px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;
+text-decoration:none;color:var(--ink);white-space:nowrap;letter-spacing:-.01em}
+header.site nav{margin-inline-start:auto;display:flex;align-items:center;
+gap:8px;flex-wrap:wrap}
+header.site nav a{color:var(--text);text-decoration:none;font-size:15px;
+font-weight:600;padding:8px 12px;border-radius:9px}
+header.site nav a:hover{background:var(--raised);color:var(--good)}
+header.site nav a.get{background:var(--good);color:#fff;padding:9px 16px}
+header.site nav a.get:hover{background:#0e6733;color:#fff}
+
+/* --- type --------------------------------------------------------------- */
+h1{font-size:clamp(32px,5.4vw,50px);line-height:1.08;letter-spacing:-.025em;
+margin:0 0 18px}
+h2{font-size:clamp(24px,3.4vw,32px);line-height:1.18;letter-spacing:-.018em;
+margin:0 0 14px}
+h3{font-size:19px;margin:0 0 8px;letter-spacing:-.01em}
+p{margin:0 0 16px}
+.lead{font-size:19px;color:var(--muted);max-width:680px}
+.kicker{display:inline-block;font-size:12.5px;font-weight:800;
+letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;
+border-radius:999px;margin:0 0 14px}
+.k-good{background:var(--goodsoft);color:var(--good)}
+.k-warn{background:var(--warmsoft);color:var(--warn)}
+.k-gold{background:#fbf0d5;color:#7a5a12}
+
+/* --- hero --------------------------------------------------------------- */
+.hero{background:linear-gradient(168deg,#fff 0%,#eaf3ee 58%,#f7efd9 100%);
+border-bottom:1px solid var(--border)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;
+align-items:center;padding-top:66px;padding-bottom:66px}
+.eyebrow{color:var(--good);font-size:13px;font-weight:800;letter-spacing:.09em;
+text-transform:uppercase;margin:0 0 16px}
+.hero p.sub{color:var(--muted);font-size:19.5px;margin:0 0 26px}
+.cta{display:inline-block;background:var(--gold);color:#2a1f05;font-weight:800;
+padding:16px 30px;border-radius:12px;text-decoration:none;
+box-shadow:0 6px 18px rgba(227,179,65,.42)}
+.cta:hover{filter:brightness(1.05)}
+.note{color:var(--muted);font-size:14.5px;margin-top:16px}
+.proof{list-style:none;margin:26px 0 0;padding:0;display:flex;gap:22px;
+flex-wrap:wrap}
+.proof li{display:flex;align-items:center;gap:8px;font-size:15px;
+font-weight:600;color:var(--text)}
+.tick{flex:none;width:19px;height:19px;border-radius:50%;background:var(--good);
+color:#fff;font-size:12px;line-height:19px;text-align:center;font-weight:900}
+
+/* --- sections ----------------------------------------------------------- */
+section{padding:64px 0}
+section.tint{background:var(--surface);border-block:1px solid var(--border)}
+
+/* --- alternating feature blocks with a phone ---------------------------- */
+.block .wrap{display:grid;grid-template-columns:1fr 300px;gap:52px;
+align-items:center}
+.block.flip .wrap{grid-template-columns:300px 1fr}
+.block.flip .copy{order:2}
+.block.flip .shot{order:1}
+.block p{color:var(--muted);font-size:17.5px;margin:0}
+
+/* --- the phone ---------------------------------------------------------- */
+.phone{width:290px;margin:0 auto;background:var(--ink);border-radius:34px;
+padding:9px;box-shadow:0 18px 44px rgba(17,22,28,.26)}
+.screen{background:var(--bg);border-radius:26px;overflow:hidden;
+font-size:12px;line-height:1.4}
+.sbar{display:flex;justify-content:space-between;padding:8px 16px 3px;
+font-size:10px;font-weight:700;color:var(--muted)}
+.abar{display:flex;align-items:center;justify-content:space-between;
+padding:6px 16px 12px;font-size:16px;font-weight:700}
+.abar span{color:var(--muted);font-size:14px;font-weight:400}
+.pad{padding:0 12px 14px}
+.pcard{background:var(--surface);border:1px solid var(--border);
+border-radius:12px;padding:11px 12px;margin-bottom:9px;display:flex;
+align-items:center;gap:10px}
+.dot{flex:none;width:11px;height:11px;border-radius:50%}
+.pcard .who{flex:1;min-width:0}
+.pcard .who b{display:block;font-size:12.5px;font-weight:700;
+white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pcard .who span{color:var(--muted);font-size:11px}
+.pcard .amt{text-align:end}
+.pcard .amt b{display:block;font-size:12.5px;font-weight:800}
+.pcard .amt span{font-size:10.5px;font-weight:700}
+.fab{width:46px;height:46px;border-radius:16px;background:var(--good);
+color:#fff;font-size:23px;line-height:46px;text-align:center;
+margin:6px 12px 0 auto;box-shadow:0 5px 14px rgba(17,122,61,.35)}
+.notif{background:var(--ink);color:#f2f4f7;border-radius:14px;padding:11px 12px;
+margin:8px 12px 14px;display:flex;gap:10px;align-items:flex-start}
+.notif b{font-size:12px;display:block;margin-bottom:2px}
+.notif span{font-size:11px;color:#b9c1cb}
+.msgbox{background:var(--surface);border:1px solid var(--border);
+border-radius:12px;padding:11px;font-size:11.5px;color:var(--text);
+margin-bottom:11px}
+.chans{display:flex;gap:7px}
+.chan{flex:1;text-align:center;padding:9px 4px;border-radius:10px;
+font-size:10.5px;font-weight:800;background:var(--good);color:#fff}
+.chan.alt{background:var(--raised);color:var(--text);
+border:1px solid var(--border)}
+.segs{display:flex;gap:6px;margin-bottom:11px}
+.seg{flex:1;text-align:center;padding:6px 0;border-radius:999px;font-size:10.5px;
+font-weight:700;background:var(--raised);color:var(--muted);
+border:1px solid var(--border)}
+.seg.on{background:var(--good);color:#fff;border-color:var(--good)}
+.rrow{display:flex;justify-content:space-between;align-items:baseline;
+background:var(--surface);border:1px solid var(--border);border-radius:12px;
+padding:11px 12px;margin-bottom:8px}
+.rrow span{color:var(--muted);font-size:11.5px}
+.rrow b{font-size:14px;font-weight:800}
+.rrow.net b{color:var(--good);font-size:17px}
+.warnbar{background:var(--warmsoft);border:1px solid #e3b94f;border-radius:10px;
+padding:9px 10px;font-size:10.5px;color:var(--warn);margin-bottom:10px}
+.pdf{text-align:center;padding:11px;border-radius:11px;background:var(--gold);
+color:#2a1f05;font-size:11.5px;font-weight:800}
+
+/* --- cards, stats, price ------------------------------------------------ */
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.card{background:var(--surface);border:1px solid var(--border);
+border-radius:16px;padding:24px;border-top:4px solid var(--good)}
+.card:nth-child(3n+2){border-top-color:var(--gold)}
+.card:nth-child(3n){border-top-color:var(--warn)}
+.card p{color:var(--muted);font-size:15.5px;margin-bottom:14px}
+.card a{font-size:14px;font-weight:700;text-decoration:none;
+border-bottom:2px solid rgba(17,122,61,.28)}
+.card a:hover{border-bottom-color:var(--good)}
+.stats{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+text-align:center}
+.stat{background:linear-gradient(160deg,#fff,#f3f7f4);border:1px solid var(--border);
+border-radius:16px;padding:26px 12px}
+.stat b{display:block;font-size:42px;line-height:1;color:var(--good);
+font-weight:800;letter-spacing:-.03em}
+.stat span{color:var(--muted);font-size:14px;display:block;margin-top:10px}
+.price{background:var(--surface);border:2px solid var(--gold);border-radius:16px;
+padding:28px;max-width:720px;box-shadow:0 8px 26px rgba(227,179,65,.18)}
+.privacy-band{background:var(--goodsoft);border-block:1px solid #c6e0d0}
+
+/* --- faq ---------------------------------------------------------------- */
+.faq-toc{columns:2;column-gap:30px;margin:0 0 34px;padding:0;list-style:none}
+.faq-toc li{margin:0 0 9px;break-inside:avoid}
+.faq-toc a{color:var(--text);text-decoration:none;font-size:15px}
+.faq-toc a:hover{color:var(--good);text-decoration:underline}
+.qa{border-top:1px solid var(--border);padding:22px 0}
+.qa h3{scroll-margin-top:84px}
+.qa p{color:var(--muted);margin:0}
+
+/* --- footer ------------------------------------------------------------- */
+footer.site{background:var(--ink);color:#9ba3af;padding:52px 0 34px;
+font-size:15px}
+footer.site a{color:#dfe4ea;text-decoration:none}
+footer.site a:hover{color:var(--gold)}
+.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1.3fr;gap:44px;
+padding-bottom:34px}
+.fbrand .brand{color:#fff;margin-bottom:14px}
+.fbrand p{color:#9ba3af;font-size:14.5px;max-width:300px;margin:0 0 20px}
+.fcta{display:inline-block;background:var(--gold);color:#2a1f05;font-weight:800;
+padding:11px 20px;border-radius:10px;font-size:14.5px}
+.fcta:hover{color:#2a1f05;filter:brightness(1.05)}
+.fcol{display:flex;flex-direction:column;gap:11px;align-items:flex-start}
+footer.site h4{margin:0 0 6px;font-size:12.5px;font-weight:800;
+letter-spacing:.11em;text-transform:uppercase;color:var(--gold)}
+.fcol a{font-size:14.5px}
+.langgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+gap:11px 18px}
+.langgrid .here{color:#fff;font-weight:700;
+border-bottom:2px solid var(--gold);justify-self:start}
+.fbar{border-top:1px solid #2a313b;padding-top:22px;display:flex;
+justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;
+color:#79828e}
+
+@media (max-width:860px){
+.hero .wrap,.block .wrap,.block.flip .wrap{grid-template-columns:1fr;gap:34px}
+.block.flip .copy,.block.flip .shot{order:0}
+.shot{order:-1}
+.faq-toc{columns:1}
+header.site nav{gap:4px}
+header.site nav a{padding:8px 9px;font-size:14px}
+.fgrid{grid-template-columns:1fr;gap:34px}
+}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap">
+<a class="brand" href="/af/"><svg width="30" height="30" viewBox="0 0 1024 1024" aria-hidden="true">
+<rect width="1024" height="1024" rx="220" fill="#12151a"/>
+<g fill="none" stroke="#f4f6f8" stroke-width="56" stroke-linecap="round" stroke-linejoin="round">
+<path d="M212 512 L512 262 L812 512"/><path d="M282 500 L282 772 L742 772 L742 500"/></g>
+<g fill="#e3b341"><path d="M422 622 m-74 0 a74 74 0 1 0 148 0 a74 74 0 1 0 -148 0
+M422 622 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" fill-rule="evenodd"/>
+<rect x="462" y="601" width="214" height="42"/><rect x="598" y="643" width="32" height="53"/>
+<rect x="648" y="643" width="28" height="53"/></g></svg><span>Easy Landlord</span></a>
+<nav>
+<a href="/af/#features">Wat dit doen</a>
+<a href="/af/#privacy">Jou data</a>
+<a href="/af/faq/">Vrae</a>
+<a class="get" href="https://play.google.com/store/apps/details?id=com.easylandlord.app" rel="noopener">Kry die app</a>
+</nav></div></header>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Easy Landlord", "operatingSystem": "Android", "applicationCategory": "BusinessApplication", "description": "Hou huur, uitgawes en wat oorbly by vir een woonstel of twintig. Sien wie betaal het, stoor kwitansies en foto's, voer 'n PDF uit. Geen rekening.", "url": "https://easylandlord.land/af/", "inLanguage": ["en", "el", "es", "it", "ru", "sq", "ar", "zh", "af", "sw"], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<main>
+<div class="hero"><div class="wrap">
+<div class="copy">
+<p class="eyebrow">Android · gratis vir drie eiendomme · geen rekening</p>
+<h1>Jou eiendomme, op een plek.</h1>
+<p class="sub">Wie het betaal, wat jy uitgegee het, die huurkontrak, die foto's, en die een bladsy wat jou rekenmeester vra. Op jou foon.</p>
+<a class="cta" href="https://play.google.com/store/apps/details?id=com.easylandlord.app" rel="noopener">Kry dit op Google Play</a>
+<p class="note">Gratis vir tot drie eiendomme. Geen kaart, geen proeftydperk wat verstryk nie.</p>
+<ul class="proof"><li><i class="tick">✓</i>Niks om by aan te meld nie</li><li><i class="tick">✓</i>Werk sonder internet</li><li><i class="tick">✓</i>10 tale, PDF ingesluit</li></ul>
+</div>
+<div class="shot"><div class="phone" role="img"><div class="screen"><div class="sbar"><span>9:41</span><span>▮▮▮</span></div>
+<div class="abar"><b>Eiendomme</b><span>≡</span></div>
+<div class="pad"><div class="pcard">
+<i class="dot" style="background:var(--bad)"></i>
+<div class="who"><b>Kerkstraat 12, Parow</b><span>Anke van Wyk</span></div>
+<div class="amt"><b>R8 500</b>
+<span style="color:var(--bad)">Laat</span></div>
+</div><div class="pcard">
+<i class="dot" style="background:var(--warn)"></i>
+<div class="who"><b>Akasialaan 4, Centurion</b><span>Sipho Ndlovu</span></div>
+<div class="amt"><b>R7 200</b>
+<span style="color:var(--warn)">Verskuldig</span></div>
+</div><div class="pcard">
+<i class="dot" style="background:var(--good)"></i>
+<div class="who"><b>Bergsigstraat 31, Durbanville</b><span>Chantal Petersen</span></div>
+<div class="amt"><b>R9 000</b>
+<span style="color:var(--good)">Betaal</span></div>
+</div></div>
+<div class="fab">+</div><div style="height:12px"></div></div></div></div>
+</div></div>
+
+<section class="tint"><div class="wrap">
+<h2>Jy het die inligting al klaar. Dit lê net oral rond.</h2>
+<p class="lead">Die bankapp vir die oorbetalings. Foto's van kwitansies êrens tussen jou ander foto's. 'n Nota oor die geyser wat jy netnou weer sal kry. Die huurkontrak in 'n lêer, seker. Dan sê 'n huurder hy het betaal, en jy begin soek. Easy Landlord is die een plek waar dit alles bly — op jou foon, met niks om by aan te meld nie.</p>
+</div></section>
+<section class="block"><div class="wrap">
+<div class="copy">
+<p class="kicker k-good">Een plek</p>
+<h2>Alles oor 'n woonstel, op een kaart</h2>
+<p>Die huur, die huurder, die uitgawes, die kwitansies, die foto's van intrek, die huurkontrak, die sertifikate. Nie tussen jou ander foto's nie, nie in 'n laai nie, nie in drie verskillende apps nie.</p>
+</div>
+<div class="shot"><div class="phone" role="img"><div class="screen"><div class="sbar"><span>9:41</span><span>▮▮▮</span></div>
+<div class="abar"><b>Bergsigstraat 31, Durbanville</b><span>✎</span></div>
+<div class="pad">
+<div class="pcard"><i class="dot" style="background:var(--good)"></i>
+<div class="who"><b>Chantal Petersen</b><span>Betaal</span></div>
+</div>
+<div class="rrow"><span>Maandelikse huur</span><b style="color:var(--good)">R9 000</b></div><div class="rrow"><span>Uitgawes</span><b>14</b></div><div class="rrow"><span>Foto's</span><b>38</b></div><div class="rrow"><span>Dokumente</span><b>Huurkontrak · ID</b></div><div class="rrow"><span>Herinnerings gestuur</span><b>2</b></div>
+</div></div></div></div>
+</div></section>
+<section class="block flip tint"><div class="wrap">
+<div class="copy">
+<p class="kicker k-warn">Voor dit skeefloop</p>
+<h2>Dit sê vir jou voor die huur laat is</h2>
+<p>'n Kennisgewing die oggend wanneer die huur betaalbaar is, en nog een sodra jou grasietydperk verby is. Dan skryf die app die herinnering vir jou — naam, adres, maand en bedrag reeds ingevul — en jy stuur dit per WhatsApp, SMS of e-pos. Jy lees dit eers, en jy kan dit verander.</p>
+</div>
+<div class="shot"><div class="phone" role="img"><div class="screen"><div class="sbar"><span>9:41</span><span>▮▮▮</span></div>
+<div class="notif"><svg width="22" height="22" viewBox="0 0 1024 1024" aria-hidden="true">
+<rect width="1024" height="1024" rx="220" fill="#12151a"/>
+<g fill="none" stroke="#f4f6f8" stroke-width="56" stroke-linecap="round" stroke-linejoin="round">
+<path d="M212 512 L512 262 L812 512"/><path d="M282 500 L282 772 L742 772 L742 500"/></g>
+<g fill="#e3b341"><path d="M422 622 m-74 0 a74 74 0 1 0 148 0 a74 74 0 1 0 -148 0
+M422 622 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" fill-rule="evenodd"/>
+<rect x="462" y="601" width="214" height="42"/><rect x="598" y="643" width="32" height="53"/>
+<rect x="648" y="643" width="28" height="53"/></g></svg><div><b>Huurder is amptelik laat</b>
+<span>Die grasietydperk vir Kerkstraat 12, Parow is verby.</span></div></div>
+<div class="abar" style="padding-top:0"><b>Stuur 'n herinnering</b></div>
+<div class="pad">
+<div class="msgbox">Hallo Anke, die huur vir Kerkstraat 12, Parow vir Maart, R8 500, het nog nie deurgekom nie. Kan jy my laat weet wanneer jy kan betaal? Dankie.</div>
+<div class="chans">
+<div class="chan">WhatsApp</div>
+<div class="chan alt">SMS</div>
+<div class="chan alt">E-pos</div>
+</div></div></div></div></div>
+</div></section>
+<section class="block"><div class="wrap">
+<div class="copy">
+<p class="kicker k-gold">Vir jou rekenmeester</p>
+<h2>Een bladsy, gereed om te oorhandig</h2>
+<p>Huur in, uitgawes uit, en wat werklik oorbly — per maand, kwartaal of jaar, vir een eiendom of vir almal. Voer dit as 'n PDF uit in jou taal, en gee dit net so vir wie ook al jou belasting doen.</p>
+</div>
+<div class="shot"><div class="phone" role="img"><div class="screen"><div class="sbar"><span>9:41</span><span>▮▮▮</span></div>
+<div class="abar"><b>Inkomste</b></div>
+<div class="pad">
+<div class="segs"><div class="seg on">Maandeliks</div>
+<div class="seg">Kwartaalliks</div>
+<div class="seg">Jaarliks</div></div>
+<div class="warnbar">Onthou: teken ELKE uitgawe aan. As jy koste oorslaan, is jou wins verkeerd.</div>
+<div class="rrow"><span>Totale huur ingevorder</span><b>R76 500</b></div>
+<div class="rrow"><span>Totale uitgawes</span><b>R12 400</b></div>
+<div class="rrow net"><span>Netto wins</span><b>R64 100</b></div>
+<div class="pdf">Voer uit na PDF</div>
+</div></div></div></div>
+</div></section>
+<section id="features"><div class="wrap">
+<h2>Wat dit doen</h2>
+<div class="grid">
+<article class="card">
+<h3>Sien wie betaal het, sonder om te dink</h3>
+<p>Elke eiendom op een skerm met 'n gekleurde kolletjie. Groen: die huur is in. Amber: verskuldig. Rooi: verby die grasietydperk wat jy self stel. Grys: die woonstel staan leeg. Dié wat jou aandag kort, sit boaan.</p>
+<a href="/af/faq/#wat-beteken-die-gekleurde-kolletjies">Wat beteken die gekleurde kolletjies?</a>
+</article>
+<article class="card">
+<h3>Teken 'n uitgawe in tien sekondes aan</h3>
+<p>Die bedrag, waarvoor dit was, en 'n foto van die strokie. Maande later is dit nog steeds daar met die datum aan, in plaas van 'n verbleikte strokie in 'n laai.</p>
+<a href="/af/faq/#hoekom-stem-die-totaal-nie-met-my-bankrekening-ooreen-nie">Hoekom stem die totaal nie met my bankrekening ooreen nie?</a>
+</article>
+<article class="card">
+<h3>Beslis 'n argument oor die deposito met foto's</h3>
+<p>Foto's van elke vertrek wanneer 'n huurder intrek, en weer wanneer hy uittrek, langs mekaar. Dít is die deel wat 'n rusie in 'n gesprek verander.</p>
+<a href="/af/faq/#n-huurder-trek-uit-wat-doen-ek">'n Huurder trek uit. Wat doen ek?</a>
+</article>
+<article class="card">
+<h3>Weet wat jy werklik verdien het</h3>
+<p>Huur min uitgawes — per maand, kwartaal of jaar, vir een eiendom of vir almal. Een bladsy PDF vir wie ook al jou belasting doen, in jou taal.</p>
+<a href="/af/faq/#kan-ek-vir-my-rekenmeester-iets-gee">Kan ek vir my rekenmeester iets gee?</a>
+</article>
+<article class="card">
+<h3>Vra huur sonder om die boodskap te skryf</h3>
+<p>Wanneer huur laat is, skryf die app 'n beleefde herinnering met die naam, adres, maand en bedrag reeds ingevul. Wysig dit as jy wil, en stuur dit dan per WhatsApp, SMS of e-pos. Dit onthou ook dat jy gevra het, en wanneer.</p>
+<a href="/af/faq/#stuur-die-program-vanself-boodskappe-aan-my-huurder">Stuur die program vanself boodskappe aan my huurder?</a>
+</article>
+<article class="card">
+<h3>Huurkontrakte, ID's en sertifikate op een plek</h3>
+<p>Heg die huurkontrak aan, 'n sertifikaat, wat ook al saak maak. Stel die datum waarop die kontrak eindig, en die app sê 'n maand vooruit vir jou. Dokumente wat by 'n huurder gehou word, gaan saam met die huurder weg.</p>
+<a href="/af/faq/#mag-ek-n-kopie-van-my-huurder-se-id-hou">Mag ek 'n kopie van my huurder se ID hou?</a>
+</article>
+</div></div></section>
+
+<section class="tint"><div class="wrap">
+<h2>Klein met opset</h2>
+<div class="stats">
+<div class="stat"><b>2</b><span>oortjies in die hele app</span></div>
+<div class="stat"><b>0</b><span>rekeninge om te skep</span></div>
+<div class="stat"><b>10</b><span>tale, PDF ingesluit</span></div>
+<div class="stat"><b>3</b><span>eiendomme gratis</span></div>
+</div></div></section>
+
+<section id="privacy" class="privacy-band"><div class="wrap">
+<h2>Jou huurders se name bly op jou foon</h2>
+<p class="lead">Daar is geen rekening om te skep nie en geen bediener wat jou rekords hou nie. Alles word op die toestel self gestoor. Al wat die app ooit stuur, is 'n anonieme verslag as dit ineenstort, en selfs dit kan jy afskakel. 'n Rugsteun is 'n lêer wat jy uitvoer en bêre waar jy wil.</p>
+<p><a href="/privacy/">Lees die privaatheidsbeleid</a></p>
+</div></section>
+
+<section><div class="wrap">
+<h2>Gratis vir drie eiendomme</h2>
+<div class="price">
+<p>Alles werk van die eerste minuut af: uitgawes, foto's, herinnerings, inkomste, PDF-uitvoer en rugsteun. Geen proeftydperk wat verstryk nie, geen kaart nie.</p>
+<p>Bo drie eiendomme is daar 'n intekening. Rugsteun, herstel en die PDF-uitvoer bly op elke vlak gratis — jou eie rekords behoort nooit gegysel te word nie.</p>
+<a class="cta" href="https://play.google.com/store/apps/details?id=com.easylandlord.app" rel="noopener">Kry dit op Google Play</a>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<h2>Vrae wat mense vra</h2>
+<ul class="faq-toc">
+<li><a href="/af/faq/#wat-beteken-die-gekleurde-kolletjies">Wat beteken die gekleurde kolletjies?</a></li>
+<li><a href="/af/faq/#hoekom-stem-die-totaal-nie-met-my-bankrekening-ooreen-nie">Hoekom stem die totaal nie met my bankrekening ooreen nie?</a></li>
+<li><a href="/af/faq/#n-huurder-trek-uit-wat-doen-ek">'n Huurder trek uit. Wat doen ek?</a></li>
+<li><a href="/af/faq/#kan-ek-vir-my-rekenmeester-iets-gee">Kan ek vir my rekenmeester iets gee?</a></li>
+<li><a href="/af/faq/#stuur-die-program-vanself-boodskappe-aan-my-huurder">Stuur die program vanself boodskappe aan my huurder?</a></li>
+</ul>
+<p><a href="/af/faq/">Vrae →</a></p>
+</div></section>
+</main>
+<footer class="site"><div class="wrap">
+<div class="fgrid">
+
+<div class="fbrand">
+<a class="brand" href="/af/"><svg width="30" height="30" viewBox="0 0 1024 1024" aria-hidden="true">
+<rect width="1024" height="1024" rx="220" fill="#12151a"/>
+<g fill="none" stroke="#f4f6f8" stroke-width="56" stroke-linecap="round" stroke-linejoin="round">
+<path d="M212 512 L512 262 L812 512"/><path d="M282 500 L282 772 L742 772 L742 500"/></g>
+<g fill="#e3b341"><path d="M422 622 m-74 0 a74 74 0 1 0 148 0 a74 74 0 1 0 -148 0
+M422 622 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" fill-rule="evenodd"/>
+<rect x="462" y="601" width="214" height="42"/><rect x="598" y="643" width="32" height="53"/>
+<rect x="648" y="643" width="28" height="53"/></g></svg><span>Easy Landlord</span></a>
+<p>Easy Landlord — vir mense wat self na hul eie huureiendom omsien.</p>
+<a class="fcta" href="https://play.google.com/store/apps/details?id=com.easylandlord.app" rel="noopener">Kry dit op Google Play</a>
+</div>
+
+<nav class="fcol" aria-label="Wat dit doen">
+<h4>Wat dit doen</h4>
+<a href="/af/#features">Wat dit doen</a>
+<a href="/af/#privacy">Jou data</a>
+<a href="/af/faq/">Vrae</a>
+<a href="/privacy/">Lees die privaatheidsbeleid</a>
+</nav>
+
+<nav class="fcol flangs" aria-label="Languages">
+<h4>Taal</h4>
+<div class="langgrid"><a href="/" hreflang="en" lang="en">English</a><a href="/el/" hreflang="el" lang="el">Ελληνικά</a><a href="/es/" hreflang="es" lang="es">Español</a><a href="/it/" hreflang="it" lang="it">Italiano</a><a href="/ru/" hreflang="ru" lang="ru">Русский</a><a href="/sq/" hreflang="sq" lang="sq">Shqip</a><a href="/ar/" hreflang="ar" lang="ar">العربية</a><a href="/zh/" hreflang="zh" lang="zh">中文</a><span class="here" lang="af">Afrikaans</span><a href="/sw/" hreflang="sw" lang="sw">Kiswahili</a></div>
+</nav>
+
+</div>
+<div class="fbar"><span>© Easy Landlord</span>
+<span>Android · gratis vir drie eiendomme · geen rekening</span></div>
+</div></footer>
+</body>
+</html>
