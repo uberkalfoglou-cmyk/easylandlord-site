@@ -95,6 +95,12 @@ align-items:center;padding-top:66px;padding-bottom:66px}
 .eyebrow{color:var(--good);font-size:13px;font-weight:800;letter-spacing:.09em;
 text-transform:uppercase;margin:0 0 16px}
 .hero p.sub{color:var(--muted);font-size:19.5px;margin:0 0 26px}
+/* The one promise no competitor with a login can copy, so it does not get to
+   sit in 13px grey text at the bottom like a footnote. */
+.claim{display:inline-flex;align-items:center;gap:10px;background:#fff;
+color:var(--good);border:1.5px solid var(--good);font-weight:800;
+font-size:18.5px;line-height:1.3;padding:12px 18px;border-radius:12px;
+margin:0 0 22px}
 .cta{display:inline-block;background:var(--gold);color:#2a1f05;font-weight:800;
 padding:16px 30px;border-radius:12px;text-decoration:none;
 box-shadow:0 6px 18px rgba(227,179,65,.42)}
@@ -193,6 +199,19 @@ font-weight:800;letter-spacing:-.03em}
 padding:28px;max-width:720px;box-shadow:0 8px 26px rgba(227,179,65,.18)}
 .privacy-band{background:var(--goodsoft);border-block:1px solid #c6e0d0}
 
+/* Two questions, not thirty-two: the FAQ's two-column list threw these to
+   opposite edges of the page and left them looking like stray sentences. They
+   are links, and the most useful ones on the page, so they look like links. */
+.qlinks{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-wrap:wrap;
+gap:10px 14px}
+.qlinks a{display:inline-block;background:var(--surface);border:1px solid #c6e0d0;
+color:var(--good);font-size:15px;font-weight:600;text-decoration:none;
+padding:9px 15px;border-radius:999px}
+.qlinks a:hover{background:var(--good);color:#fff;border-color:var(--good)}
+.qlinks a::after{content:" →"}
+/* An arrow means "onward". In Arabic, onward is the other way. */
+[dir=rtl] .qlinks a::after{content:" ←"}
+
 /* --- faq ---------------------------------------------------------------- */
 .faq-toc{columns:2;column-gap:30px;margin:0 0 34px;padding:0;list-style:none}
 .faq-toc li{margin:0 0 9px;break-inside:avoid}
@@ -273,6 +292,7 @@ M422 622 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" fill-rule="evenodd"/>
 <div class="copy">
 <p class="eyebrow">Android · бесплатно до трёх объектов · без аккаунта</p>
 <h1>Вся ваша аренда — в одном месте.</h1>
+<p class="claim"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg><span>Без аккаунта. Ничего не покидает ваш телефон.</span></p>
 <p class="sub">Кто заплатил, сколько вы потратили, договор, фото и та самая страница, которую просит бухгалтер. Всё в телефоне.</p>
 <a class="cta" href="https://play.google.com/store/apps/details?id=com.easylandlord.app" rel="noopener">Скачать в Google Play</a>
 <p class="note">Бесплатно до трёх объектов. Без карты и без пробного периода, который заканчивается.</p>
@@ -409,7 +429,7 @@ M422 622 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" fill-rule="evenodd"/>
 <section id="privacy" class="privacy-band"><div class="wrap">
 <h2>Без аккаунта и без облака — регистрация не нужна</h2>
 <p class="lead">Имена ваших жильцов остаются в вашем телефоне. Заводить аккаунт не нужно, и нет сервера, на котором лежали бы ваши записи, — поэтому приложение работает даже с выключенным интернетом. Единственное, что оно отправляет, — анонимный отчёт, если приложение аварийно завершилось, и это тоже можно выключить. Резервная копия — это файл: вы его выгружаете и храните там, где хотите.</p>
-<ul class="faq-toc">
+<ul class="qlinks">
 <li><a href="/ru/faq/#нужен-ли-аккаунт">Нужен ли аккаунт?</a></li>
 <li><a href="/ru/faq/#где-хранятся-мои-данные">Где хранятся мои данные?</a></li>
 </ul>
